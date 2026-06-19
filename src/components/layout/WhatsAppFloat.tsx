@@ -23,4 +23,6 @@ export default function WhatsAppFloat() {
             <FaWhatsapp aria-hidden="true" />
         </Link>
     )
+
+    // Testing
 }
