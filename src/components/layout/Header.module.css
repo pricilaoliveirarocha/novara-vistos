@@ -1,0 +1,47 @@
+.header {
+  min-height: var(--header-height);
+}
+
+.logo {
+  width: auto;
+  height: 48px;
+  object-fit: contain;
+}
+
+.navLink {
+  position: relative;
+  font-weight: 600;
+  color: var(--color-primary);
+  transition: color 0.2s ease;
+}
+
+.navLink:hover {
+  color: var(--color-accent);
+}
+
+.dropdownMenu {
+  margin-top: 0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.dropdownItem {
+  font-size: 0.95rem;
+  padding: 0.65rem 1.25rem;
+  color: var(--color-dark);
+}
+
+.dropdownItem:hover {
+  background-color: var(--color-light);
+  color: var(--color-accent);
+}
+
+@media (min-width: 992px) {
+  .dropdownHover:hover > .dropdownMenu {
+    display: block;
+  }
+
+  .dropdownHover:hover > .navLink {
+    color: var(--color-accent);
+  }
+}

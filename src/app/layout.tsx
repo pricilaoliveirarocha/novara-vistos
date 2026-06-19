@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import './globals.css'
+import './css/globals.css'
 
 const montserrat = Montserrat({
     variable: '--font-heading',
@@ -18,8 +21,8 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-    title: 'Vistos Prime',
-    description: 'Assessoria especializada para vistos e documentação internacional.',
+    title: 'Vistos Prime | Assessoria para Vistos e Documentação Internacional',
+    description: 'Assessoria especializada para vistos, autorizações eletrônicas, passaporte brasileiro e documentação internacional.',
 }
 
 export default function RootLayout({
@@ -31,7 +34,13 @@ export default function RootLayout({
         <html
             lang="pt-BR"
             className={`${montserrat.variable} ${openSans.variable}`}>
-            <body>{children}</body>
+            <body className="site-body">
+                <Header />
+
+                <main className="site-main">{children}</main>
+
+                <Footer />
+            </body>
         </html>
     )
 }

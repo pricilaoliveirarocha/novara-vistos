@@ -10,16 +10,35 @@
 
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Open Sans", sans-serif;
+
+  --header-height: 76px;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+html,
 body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
   font-family: var(--font-body);
   background-color: var(--color-white);
   color: var(--color-dark);
+}
+
+.site-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-main {
+  flex: 1;
+  padding-top: var(--header-height);
 }
 
 h1,
