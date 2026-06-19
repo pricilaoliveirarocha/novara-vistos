@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaPlaneDeparture } from 'react-icons/fa6'
 
-import logo from '@/img/logo-header.png'
+import logonotxt from '@/img/logo-no-text.png'
 
 import styles from './Header.module.css'
 
@@ -28,12 +28,12 @@ export default function Header() {
                         className={`navbar-brand d-flex align-items-center ${styles.brand}`}
                         href="/">
                         <Image
-                            src={logo}
+                            src={logonotxt}
                             alt="Vistos Prime"
                             width={75}
                             height={56}
                             priority
-                            className={styles.logo}
+                            className={styles.logonotxt}
                         />
                     </Link>
 

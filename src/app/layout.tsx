@@ -3,6 +3,7 @@ import { Montserrat, Open_Sans } from 'next/font/google'
 
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -40,6 +41,7 @@ export default function RootLayout({
                 <main className="site-main">{children}</main>
 
                 <Footer />
+                <WhatsAppFloat />
             </body>
         </html>
     )
