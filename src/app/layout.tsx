@@ -21,7 +21,7 @@ const openSans = Open_Sans({
 })
 
 export const metadata: Metadata = {
-    title: 'Vistos Prime | Assessoria para Vistos e Documentação Internacional',
+    title: 'Vistos Prime | Vistos e Documentação Internacional',
     description: 'Assessoria especializada para vistos, autorizações eletrônicas, passaporte brasileiro e documentação internacional.',
 }
 

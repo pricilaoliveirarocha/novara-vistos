@@ -11,7 +11,13 @@
   --font-heading: "Montserrat", sans-serif;
   --font-body: "Open Sans", sans-serif;
 
-  --header-height: 76px;
+  --header-height: 40px;
+  --site-container-max: 1380px;
+  --site-container-gutter: clamp(1rem, 1.8vw, 1.35rem);
+}
+
+.dropdown-toggle:after {
+    border:none;
 }
 
 html {
@@ -41,6 +47,16 @@ body {
   padding-top: var(--header-height);
 }
 
+.container,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  max-width: min(var(--site-container-max), calc(100% - 1.5rem));
+  padding-inline: var(--site-container-gutter);
+}
+
 h1,
 h2,
 h3,
@@ -53,6 +69,33 @@ h6,
 
 a {
   text-decoration: none;
+}
+
+.navLink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.72rem 0.95rem !important;
+  font-size: 1.03rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-primary);
+  border-radius: 999px;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0.95rem;
+  right: 0.95rem;
+  bottom: 0.45rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
 }
 
 .btn-primary-custom {
@@ -91,4 +134,20 @@ a {
 
 .bg-light-custom {
   background-color: var(--color-light);
+}
+
+@media (max-width: 991.98px) {
+  :root {
+    --header-height: 88px;
+    --site-container-gutter: 0.95rem;
+  }
+
+  .container,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    max-width: calc(100% - 0.7rem);
+  }
 }

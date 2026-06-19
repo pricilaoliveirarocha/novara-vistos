@@ -1,29 +1,44 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { FaPlaneDeparture } from 'react-icons/fa6'
+
+import logo from '@/img/logo-header.png'
+
 import styles from './Header.module.css'
+
+function NavLinkLabel({ label }: Readonly<{ label: string }>) {
+    return (
+        <>
+            <span className={styles.navText}>{label}</span>
+            <span
+                aria-hidden="true"
+                className={styles.navPlane}>
+                <FaPlaneDeparture className={styles.navPlaneIcon} />
+            </span>
+        </>
+    )
+}
 
 export default function Header() {
     return (
-        <header className={`fixed-top bg-white border-bottom shadow-sm ${styles.header}`}>
-            <nav className="navbar navbar-expand-lg navbar-light">
+        <header className={`fixed-top ${styles.header}`}>
+            <nav className={`navbar navbar-expand-lg navbar-light ${styles.navbar}`}>
                 <div className="container">
-                    {/* Logo principal */}
                     <Link
-                        className="navbar-brand d-flex align-items-center"
+                        className={`navbar-brand d-flex align-items-center ${styles.brand}`}
                         href="/">
                         <Image
-                            src="/img/logo-vistos-prime.png"
+                            src={logo}
                             alt="Vistos Prime"
-                            width={160}
-                            height={48}
+                            width={75}
+                            height={56}
                             priority
                             className={styles.logo}
                         />
                     </Link>
 
-                    {/* Hover para telas menores */}
                     <button
-                        className="navbar-toggler"
+                        className={`navbar-toggler ${styles.toggler}`}
                         type="button"
                         data-bs-toggle="collapse"
                         data-bs-target="#mainNavbar"
@@ -34,15 +49,14 @@ export default function Header() {
                     </button>
 
                     <div
-                        className="collapse navbar-collapse"
+                        className={`collapse navbar-collapse ${styles.navbarCollapse}`}
                         id="mainNavbar">
-                        {/* Links de navegação */}
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
+                        <ul className={`navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center ${styles.navList}`}>
                             <li className="nav-item">
                                 <Link
                                     className={`nav-link ${styles.navLink}`}
                                     href="/">
-                                    Início
+                                    <NavLinkLabel label="Início" />
                                 </Link>
                             </li>
 
@@ -50,7 +64,7 @@ export default function Header() {
                                 <Link
                                     className={`nav-link ${styles.navLink}`}
                                     href="/sobre-nos">
-                                    Sobre nós
+                                    <NavLinkLabel label="Sobre nós" />
                                 </Link>
                             </li>
 
@@ -61,7 +75,7 @@ export default function Header() {
                                     id="servicesDropdown"
                                     role="button"
                                     aria-expanded="false">
-                                    Nossos serviços
+                                    <NavLinkLabel label="Nossos serviços" />
                                 </Link>
 
                                 <ul
