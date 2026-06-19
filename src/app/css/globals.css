@@ -1,0 +1,75 @@
+:root {
+  --color-primary: #0b1f4d;
+  --color-primary-light: #123b7a;
+  --color-accent: #c1121f;
+  --color-accent-hover: #a30f1a;
+  --color-white: #ffffff;
+  --color-light: #f8f9fa;
+  --color-dark: #1f2937;
+  --color-muted: #6b7280;
+
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  color: var(--color-dark);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand {
+  font-family: var(--font-heading);
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-primary-custom {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-primary-custom:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  color: var(--color-white);
+}
+
+.btn-outline-custom {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline-custom:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.text-primary-custom {
+  color: var(--color-primary);
+}
+
+.text-accent-custom {
+  color: var(--color-accent);
+}
+
+.bg-primary-custom {
+  background-color: var(--color-primary);
+}
+
+.bg-light-custom {
+  background-color: var(--color-light);
+}

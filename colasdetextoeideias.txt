@@ -1,0 +1,39 @@
+Nossa empresa não tem filiação com Órgãos Governamentais, trata-se de um Despachante de Visto e Passaporte.
+Informamos que é possível realizar os trâmites pela fonte oficial, onde os formulários encontram-se disponíveis gratuitamente.
+
+
+Home
+├── Hero
+├── Serviços principais
+├── Por que escolher a Vistos Prime
+├── Como funciona o atendimento
+├── Países ou tipos de visto
+├── Depoimentos ou diferenciais
+├── Perguntas frequentes
+├── Chamada para contato
+└── Footer
+
+
+
+
+nossos servicos:
+- Assessoria Visto Americano  de turismo ou negócios B1/B2 R$590,00 por solicitante.
+- Assessoria Visto Americano   De estudos, categoria F1/F2 R$690,00 por solicitante.
+- Assessoria renovação do Visto Americano R$590,00 por solicitante.
+- Visto Americano despacho/representação Consular R$390,00 por solicitante.
+- Assessoria Visto Canadense de turismo R$690,00 por solicitante.
+- Assessoria Autorização eletrônica Canadense “ETA” R$390,00 por solicitante.
+- Assessoria autorização Americana para aplicantes com Cidaninia Europeia “ESTA” R$390,00 por solicitante.
+- Assessoria autorização eletrônica Mexicana “E-Visa” R$390,00 por aplicante.
+- Assessoria para Visto de turismo Australiano R$700,00 por solicitante.
+- Assessoria autorização para a Nova Zelândia R$390,00 por solicitante.
+- Assessoria emissão de Passaporte Brasileiro R$250,00 por solicitante.
+- Assessoria Visto China/Japão e Egito sem o representação Consular R$690,00 por solicitante. Com representação Consular R$890,00.
+- Assessoria Visto para o Vietnã/Nepal/Camboja R$490,00 por solicitante.
+
+
+
+
+- pagina = quem somos ?
+- pagina = Nossa história
+- pagina = depoimentos
