@@ -31,6 +31,29 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #1c1c18;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+body * {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+img,
+svg {
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+input,
+textarea,
+select,
+button,
+[contenteditable='true'] {
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 a {
@@ -42,4 +65,13 @@ a {
 
 a:hover {
     color: var(--button-primary-hover);
+}
+
+.ui-hover-lift {
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.ui-hover-lift:hover {
+    transform: translateY(var(--hover-lift-y, -8px));
+    box-shadow: var(--hover-lift-shadow, 0 20px 42px rgba(21, 18, 76, 0.1));
 }
