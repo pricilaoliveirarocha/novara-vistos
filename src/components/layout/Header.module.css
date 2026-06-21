@@ -1,0 +1,92 @@
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    width: 100%;
+    border-bottom: 1px solid rgba(28, 28, 24, 0.08);
+    background: rgba(255, 253, 248, 0.92);
+    backdrop-filter: blur(10px);
+}
+
+.inner {
+    width: min(100% - 2rem, 1300px);
+    min-height: var(--header-height);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logoBox {
+    width: 56px;
+    height: 56px;
+    display: block;
+    object-fit: contain;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.navLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--button-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.navLink:hover {
+    color: var(--button-primary-hover);
+    transform: translateY(-1px) scale(1.05);
+}
+
+.navIcon {
+    width: 1.05rem;
+    height: 1.05rem;
+    flex-shrink: 0;
+    color: currentColor;
+    transform: translateY(-1px);
+}
+
+.navLinkButton {
+    padding: 0.65rem 1rem;
+    border-radius: 999px;
+    background: var(--button-red);
+    color: var(--color-white);
+}
+
+.navLinkButton:hover {
+    color: var(--color-white);
+    background: var(--button-red-hover);
+    transform: translateY(-1px) scale(1.02);
+}
+
+@media (max-width: 900px) {
+    .inner {
+        min-height: auto;
+        padding-block: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav {
+        gap: 1rem 1.25rem;
+        justify-content: flex-start;
+    }
+}

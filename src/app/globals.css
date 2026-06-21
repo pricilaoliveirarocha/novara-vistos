@@ -1,0 +1,45 @@
+/* Variáveis do projeto */
+:root {
+    --color-primary: #15124c;
+    --color-primary-light: #45405e;
+    --color-accent: #f4141c;
+    --color-accent-hover: #c8120e;
+    --button-primary: #15124c;
+    --button-primary-hover: #45405e;
+    --button-red: #f4141c;
+    --button-red-hover: #c8120e;
+    --color-white: #ffffff;
+    --color-dark: #000000;
+    --color-muted: #6b7280;
+    --header-height: 80px;
+}
+
+*,
+html {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    color-scheme: light;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #1c1c18;
+}
+
+a {
+    color: var(--button-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--button-primary-hover);
+}
