@@ -79,6 +79,7 @@ a:hover {
 .visa-card {
     position: relative;
     min-height: 16rem;
+    scroll-margin-top: calc(var(--header-height) + 1.5rem);
     isolation: isolate;
     display: flex;
     flex-direction: column;
@@ -95,6 +96,13 @@ a:hover {
         0 24px 52px rgba(21, 18, 76, 0.08);
     --hover-lift-y: -7px;
     --hover-lift-shadow: 0 22px 44px rgba(21, 18, 76, 0.14);
+}
+
+.visa-card:target {
+    border-color: rgba(244, 20, 28, 0.42);
+    box-shadow:
+        0 0 0 3px rgba(244, 20, 28, 0.08),
+        0 22px 44px rgba(21, 18, 76, 0.14);
 }
 
 .visa-card > * {
@@ -189,6 +197,30 @@ a:hover {
     font-size: 0.64rem;
     font-weight: 700;
     line-height: 1;
+}
+
+.visa-card__secondary-price-row {
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.35rem;
+    margin-top: 0.6rem;
+    color: var(--color-primary);
+    line-height: 1.1;
+    text-align: center;
+}
+
+.visa-card__secondary-price {
+    color: var(--button-primary);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.visa-card__secondary-caption {
+    max-width: 9rem;
+    color: var(--color-muted);
+    font-size: 0.62rem;
+    font-weight: 700;
 }
 
 .visa-card__hire-button {

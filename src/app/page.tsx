@@ -2,9 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { CSSProperties } from 'react'
 import { ArrowRight, BriefcaseBusiness, ClipboardList, FileText, GraduationCap, IdCard, Mail, MessageCircleMore, Plane, PlaneTakeoff, Star, UsersRound, type LucideIcon } from 'lucide-react'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 
+import QuickEmailForm from '@/components/home/QuickEmailForm'
 import TestimonialCarousel, { type TestimonialVideoItem } from '@/components/home/TestimonialCarousel'
-import { getVisaServiceLabel, getVisaServicesByIds, MAIN_VISA_SERVICE_IDS } from '@/data/visaServices'
+import VisaServiceSearch, { type VisaServiceSearchOption } from '@/components/home/VisaServiceSearch'
+import { getVisaServiceLabel, getVisaServicesByIds, MAIN_VISA_SERVICE_IDS, VISA_SERVICES } from '@/data/visaServices'
 import { getWhatsAppHref, WHATSAPP_HREF } from '@/lib/whatsapp'
 
 import styles from './page.module.css'
@@ -106,6 +109,12 @@ const testimonialVideos: TestimonialVideoItem[] = [
 
 const highlightedVisaServices = getVisaServicesByIds(MAIN_VISA_SERVICE_IDS)
 
+const visaSearchServices: VisaServiceSearchOption[] = VISA_SERVICES.map((service) => ({
+    id: service.id,
+    label: getVisaServiceLabel(service),
+    category: service.category,
+}))
+
 const priceFormatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -126,6 +135,8 @@ export default function Home() {
                 className={styles.hero}>
                 <div className={styles.inner}>
                     <div className={styles.content}>
+                        <VisaServiceSearch services={visaSearchServices} />
+
                         <div className={styles.eyebrowWrapper}>
                             <Star
                                 className={styles.eyebrowIcon}
@@ -286,6 +297,75 @@ export default function Home() {
             </section>
 
             <section
+                id="duvidas"
+                className={styles.questionsSection}>
+                <div className={styles.questionsInner}>
+                    <div className={styles.questionsContact}>
+                        <div className={`${styles.eyebrowWrapper} ${styles.questionsEyebrowWrapper}`}>
+                            <Star
+                                className={styles.eyebrowIcon}
+                                aria-hidden="true"
+                                fill="currentColor"
+                            />
+                            <p className={styles.eyebrow}>ENVIE SUAS DÚVIDAS</p>
+                        </div>
+
+                        <h2 className={styles.questionsTitle}>Fale com nossa equipe</h2>
+                        <p className={styles.questionsDescription}>Envie um e-mail com sua dúvida e respondemos o mais rápido possível.</p>
+
+                        <div className={styles.contactCards}>
+                            <a
+                                href={WHATSAPP_HREF}
+                                className={styles.contactCard}
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                <span className={`${styles.contactCardIcon} ${styles.contactCardIconWhatsapp}`}>
+                                    <FaWhatsapp aria-hidden="true" />
+                                </span>
+                                <span className={styles.contactCardText}>
+                                    <strong>WhatsApp</strong>
+                                    <span>Atendimento rápido e direto</span>
+                                </span>
+                                <span className={styles.contactCardValue}>(21) 97604-0746</span>
+                            </a>
+
+                            <a
+                                href="mailto:vistosprimerj@gmail.com"
+                                className={styles.contactCard}>
+                                <span className={styles.contactCardIcon}>
+                                    <Mail aria-hidden="true" />
+                                </span>
+                                <span className={styles.contactCardText}>
+                                    <strong>E-mail</strong>
+                                    <span>Resposta em até 24h úteis</span>
+                                </span>
+                                <span className={styles.contactCardValue}>vistosprimerj@gmail.com</span>
+                            </a>
+
+                            <a
+                                href="https://www.instagram.com/vistosprimerj"
+                                className={styles.contactCard}
+                                rel="noopener noreferrer"
+                                target="_blank">
+                                <span className={styles.contactCardIcon}>
+                                    <FaInstagram aria-hidden="true" />
+                                </span>
+                                <span className={styles.contactCardText}>
+                                    <strong>Instagram</strong>
+                                    <span>Acompanhe novidades e dicas</span>
+                                </span>
+                                <span className={styles.contactCardValue}>@vistosprimerj</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className={styles.questionsFormCard}>
+                        <QuickEmailForm />
+                    </div>
+                </div>
+            </section>
+
+            <section
                 id="vistos-valores"
                 className={styles.visaPricingSection}>
                 <div className={styles.visaPricingInner}>
@@ -331,6 +411,13 @@ export default function Home() {
                                     <div className="visa-card__price-wrap">
                                         <strong className="visa-card__price">{priceFormatter.format(item.price)}</strong>
                                         <span className="visa-card__caption">{item.priceCaption}</span>
+
+                                        {item.secondaryPrice ? (
+                                            <span className="visa-card__secondary-price-row">
+                                                <strong className="visa-card__secondary-price">{priceFormatter.format(item.secondaryPrice)}</strong>
+                                                <span className="visa-card__secondary-caption">{item.secondaryPriceCaption}</span>
+                                            </span>
+                                        ) : null}
                                     </div>
 
                                     <a

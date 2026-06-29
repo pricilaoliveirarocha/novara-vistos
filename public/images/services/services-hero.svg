@@ -1,0 +1,35 @@
+<svg width="560" height="320" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="560" height="320" rx="28" fill="#F5FAFF"/>
+  <path d="M37 241C117 170 204 135 298 136C397 137 474 87 525 35" stroke="#CFE0F4" stroke-width="3" stroke-dasharray="7 9"/>
+  <g opacity="0.55">
+    <path d="M300 34C325 51 354 59 386 59C419 59 454 69 491 89" stroke="#DCEAF8" stroke-width="12" stroke-linecap="round"/>
+    <path d="M51 94C87 72 123 64 159 71C200 79 233 69 260 43" stroke="#E3EEF9" stroke-width="12" stroke-linecap="round"/>
+    <path d="M91 257C138 230 185 221 232 230C288 241 332 227 364 188" stroke="#E1EEF9" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(274 76) rotate(8)">
+    <rect x="0" y="0" width="142" height="178" rx="10" fill="#FFFFFF" stroke="#C9D4E4" stroke-width="3"/>
+    <rect x="18" y="28" width="105" height="18" rx="4" fill="#E6EDF7"/>
+    <rect x="18" y="60" width="84" height="12" rx="3" fill="#DDE7F4"/>
+    <rect x="18" y="84" width="106" height="12" rx="3" fill="#DDE7F4"/>
+    <rect x="18" y="108" width="74" height="12" rx="3" fill="#DDE7F4"/>
+    <rect x="18" y="134" width="54" height="26" rx="5" fill="#F4141C" opacity="0.14"/>
+    <path d="M91 132L121 157" stroke="#15124C" stroke-width="4" stroke-linecap="round"/>
+    <path d="M120 134L94 160" stroke="#15124C" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(134 52) rotate(-7)">
+    <rect width="128" height="184" rx="14" fill="#10245C"/>
+    <rect x="12" y="12" width="104" height="160" rx="10" stroke="#31477D" stroke-width="2"/>
+    <text x="64" y="42" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">BRASIL</text>
+    <circle cx="64" cy="91" r="30" fill="#D5B15D" opacity="0.95"/>
+    <circle cx="64" cy="91" r="21" fill="#10245C"/>
+    <path d="M64 57L69 83H96L74 98L82 124L64 108L46 124L54 98L32 83H59L64 57Z" fill="#D5B15D"/>
+    <text x="64" y="151" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">PASSAPORTE</text>
+  </g>
+  <g transform="translate(328 126) rotate(-18)">
+    <path d="M18 80L156 19C163 16 170 23 166 30L132 86L167 127C171 132 168 140 161 140L103 139L69 194C65 201 55 198 55 190L56 120L6 94C-1 90 0 84 8 82L18 80Z" fill="#FFFFFF" stroke="#D7E2F0" stroke-width="3"/>
+    <path d="M56 120L132 86" stroke="#D7E2F0" stroke-width="3"/>
+  </g>
+  <circle cx="456" cy="95" r="42" stroke="#B7D2EC" stroke-width="3" stroke-dasharray="5 6"/>
+  <path d="M442 95H470M456 81V109" stroke="#B7D2EC" stroke-width="3" stroke-linecap="round"/>
+  <path d="M431 52L442 44L438 58L452 62L438 66L442 80L431 72L420 80L424 66L410 62L424 58L420 44L431 52Z" fill="#6FA4D8"/>
+</svg>

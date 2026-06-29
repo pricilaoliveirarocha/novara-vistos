@@ -1,6 +1,6 @@
 .page {
     min-height: calc(100svh - var(--header-height));
-    padding: 4rem 0 5rem;
+    padding: 3.25rem 0 5rem;
     background:
         linear-gradient(180deg, #ffffff 0%, #f8f9fd 100%);
 }
@@ -10,61 +10,103 @@
     margin: 0 auto;
 }
 
-.heading {
-    display: flex;
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
     align-items: end;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-bottom: 1.6rem;
+    gap: clamp(2rem, 5vw, 5rem);
+    padding: 0 0 2rem;
+}
+
+.heroContent {
+    max-width: 42rem;
 }
 
 .eyebrow {
-    margin: 0 0 0.5rem;
-    color: var(--button-red);
-    font-size: 0.78rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary);
+    font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.08em;
 }
 
+.eyebrowIcon {
+    width: 0.9rem;
+    height: 0.9rem;
+    color: var(--color-primary);
+}
+
 .title {
+    max-width: 42ch;
     margin: 0;
     color: var(--color-primary);
-    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-size: 4rem;
     font-weight: 700;
     line-height: 0.95;
+    letter-spacing: -0.06em;
+    text-wrap: balance;
 }
 
-.backLink {
-    display: inline-flex;
+.title span {
+    color: var(--button-red);
+}
+
+.description {
+    max-width: 36rem;
+    margin: 0 0 0 auto;
+    color: var(--color-muted);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.searchBar {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: center;
-    justify-content: center;
-    gap: 0.45rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    line-height: 1;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    gap: 0.8rem;
+    min-height: 3.35rem;
+    margin: 0 auto 1.75rem;
+    padding: 0 1.1rem;
+    border: 1px solid rgba(21, 18, 76, 0.14);
+    border-radius: 0.75rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 34px rgba(21, 18, 76, 0.1);
 }
 
-.backLink {
-    flex-shrink: 0;
-    padding: 0.78rem 1rem;
-    border: 1px solid rgba(21, 18, 76, 0.16);
-    background: #ffffff;
+.searchBar:focus-within {
+    border-color: rgba(244, 20, 28, 0.28);
+    box-shadow:
+        0 0 0 3px rgba(244, 20, 28, 0.08),
+        0 18px 36px rgba(21, 18, 76, 0.12);
+}
+
+.searchIcon {
+    width: 1.2rem;
+    height: 1.2rem;
     color: var(--button-primary);
-    box-shadow: 0 12px 26px rgba(21, 18, 76, 0.08);
+    stroke-width: 2;
 }
 
-.backLink:hover {
-    border-color: rgba(21, 18, 76, 0.28);
-    color: var(--button-primary);
-    transform: translateY(-1px);
+.searchBar input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-primary);
+    font: inherit;
+    font-size: 0.96rem;
+    font-weight: 600;
+    outline: none;
 }
 
-.buttonIcon {
-    width: 1rem;
-    height: 1rem;
-    flex-shrink: 0;
+.searchBar input::placeholder {
+    color: rgba(21, 18, 76, 0.56);
 }
 
 .grid {
@@ -73,25 +115,57 @@
     gap: 1.15rem;
 }
 
+.emptyState {
+    margin: 2rem 0 0;
+    color: var(--color-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
 @media (max-width: 1100px) {
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .description {
+        max-width: 42rem;
+        margin-left: 0;
+        text-align: left;
+    }
+
     .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
     .page {
-        padding: 3rem 0 4rem;
+        padding: 1.4rem 0 4rem;
     }
 
-    .heading {
-        flex-direction: column-reverse;
-        align-items: flex-start;
+    .hero {
+        padding-bottom: 1.4rem;
+    }
+
+    .title {
+        max-width: 100%;
+        font-size: clamp(2.6rem, 11vw, 4rem);
+    }
+
+    .description {
+        max-width: 100%;
+        font-size: 1.05rem;
+    }
+
+    .searchBar {
+        min-height: 3.1rem;
+        margin-bottom: 1.2rem;
+        border-radius: 0.7rem;
     }
 
     .grid {
         grid-template-columns: 1fr;
         gap: 0.75rem;
     }
-
 }

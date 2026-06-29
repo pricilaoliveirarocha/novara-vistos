@@ -483,6 +483,148 @@
     hyphens: auto;
 }
 
+.questionsSection {
+    padding: 0 0 5rem;
+    background: #ffffff;
+}
+
+.questionsInner {
+    width: min(100% - 2rem, 1300px);
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.85fr) minmax(0, 1.45fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: stretch;
+    margin: 0 auto;
+    padding: clamp(1.4rem, 2.4vw, 2rem);
+    border: 1px solid rgba(21, 18, 76, 0.1);
+    border-radius: 1.35rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 254, 0.94)),
+        linear-gradient(135deg, rgba(244, 20, 28, 0.08), rgba(21, 18, 76, 0.08));
+    box-shadow: 0 20px 48px rgba(21, 18, 76, 0.08);
+}
+
+.questionsContact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.questionsEyebrowWrapper {
+    width: fit-content;
+    margin: 0 0 0.85rem;
+}
+
+.questionsTitle {
+    margin: 0;
+    color: var(--color-primary);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+}
+
+.questionsDescription {
+    max-width: 25rem;
+    margin: 0.8rem 0 1.25rem;
+    color: var(--color-primary-light);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.35;
+}
+
+.contactCards {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.contactCard {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 2.75rem;
+    padding: 0.15rem 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contactCard:hover {
+    color: var(--button-red);
+    transform: translateY(-1px);
+    box-shadow: none;
+}
+
+.contactCardIcon {
+    width: 2.15rem;
+    height: 2.15rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(21, 18, 76, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.48);
+    color: var(--button-primary);
+    font-size: 1.05rem;
+}
+
+.contactCardIcon svg {
+    width: 1.05rem;
+    height: 1.05rem;
+}
+
+.contactCardIconWhatsapp {
+    color: #14a947;
+}
+
+.contactCardText {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.contactCardText strong {
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.contactCardText span,
+.contactCardValue {
+    color: var(--color-primary-light);
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.18;
+}
+
+.contactCardValue {
+    max-width: 12rem;
+    color: var(--color-primary);
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.questionsFormCard {
+    display: flex;
+    align-items: center;
+    padding: clamp(1.2rem, 2vw, 1.8rem);
+    border: 1px solid rgba(21, 18, 76, 0.08);
+    border-radius: 1.15rem;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 18px 42px rgba(21, 18, 76, 0.08);
+}
+
+.questionsFormCard > * {
+    width: 100%;
+}
+
 .visaPricingSection {
     padding: 0 0 5rem;
     background:
@@ -550,6 +692,29 @@
 @media (max-width: 1100px) {
     .servicesGrid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .questionsInner {
+        grid-template-columns: 1fr;
+    }
+
+    .questionsContact {
+        justify-content: flex-start;
+    }
+
+    .contactCards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .contactCard {
+        grid-template-columns: auto minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .contactCardValue {
+        grid-column: 2;
+        max-width: none;
+        text-align: left;
     }
 
     .visaPricingGrid {
@@ -628,6 +793,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
+    .contactCards {
+        grid-template-columns: 1fr;
+    }
+
     .visaPricingSection {
         padding-bottom: 3.75rem;
     }
@@ -663,6 +832,28 @@
 
     .serviceDescription {
         font-size: 0.76rem;
+    }
+
+    .questionsSection {
+        padding-bottom: 3.75rem;
+    }
+
+    .questionsInner {
+        padding: 1rem;
+        border-radius: 1rem;
+    }
+
+    .questionsTitle {
+        font-size: 1.85rem;
+    }
+
+    .questionsDescription {
+        font-size: 0.92rem;
+    }
+
+    .questionsFormCard {
+        padding: 1rem;
+        border-radius: 0.9rem;
     }
 
     .visaPricingTitle {
