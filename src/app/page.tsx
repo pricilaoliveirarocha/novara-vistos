@@ -1,37 +1,57 @@
 import Image from 'next/image'
-import { ClipboardList, Clock3, FileText, Globe, Mail, MessageCircleMore, Plane, ShieldCheck, UsersRound, Star, type LucideIcon } from 'lucide-react'
+import Link from 'next/link'
+import type { CSSProperties } from 'react'
+import { ArrowRight, BriefcaseBusiness, ClipboardList, FileText, GraduationCap, IdCard, Mail, MessageCircleMore, Plane, PlaneTakeoff, Star, UsersRound, type LucideIcon } from 'lucide-react'
 
 import TestimonialCarousel, { type TestimonialVideoItem } from '@/components/home/TestimonialCarousel'
-import { WHATSAPP_HREF } from '@/lib/whatsapp'
+import { getVisaServiceLabel, getVisaServicesByIds, MAIN_VISA_SERVICE_IDS } from '@/data/visaServices'
+import { getWhatsAppHref, WHATSAPP_HREF } from '@/lib/whatsapp'
 
 import styles from './page.module.css'
 
-type FeatureItem = {
+type ServiceItem = {
     title: string
     description: string
     icon: LucideIcon
+    tone: 'primary' | 'accent'
 }
 
-const featureItems: FeatureItem[] = [
+const serviceItems: ServiceItem[] = [
     {
-        title: 'Segurança e confiança',
-        description: 'Processos seguros e alinhados às exigências dos consulados.',
-        icon: ShieldCheck,
+        title: 'Visto de Turismo',
+        description: 'Assessoria completa para vistos de turismo para os principais destinos.',
+        icon: PlaneTakeoff,
+        tone: 'primary',
     },
     {
-        title: 'Agilidade no atendimento',
-        description: 'Respostas rápidas e suporte em todas as etapas.',
-        icon: Clock3,
+        title: 'Visto de Negócios',
+        description: 'Suporte para viagens de negócios, reuniões, eventos e feiras.',
+        icon: BriefcaseBusiness,
+        tone: 'accent',
     },
     {
-        title: 'Atendimento personalizado',
-        description: 'Soluções sob medida para o seu perfil e objetivo.',
+        title: 'Visto de Estudante',
+        description: 'Orientação para vistos acadêmicos e programas de intercâmbio.',
+        icon: GraduationCap,
+        tone: 'primary',
+    },
+    {
+        title: 'Visto de Reunião Familiar',
+        description: 'Vistos para visita a familiares no exterior.',
         icon: UsersRound,
+        tone: 'accent',
     },
     {
-        title: 'Atuação internacional',
-        description: 'Experiência com vistos para os principais destinos do mundo.',
-        icon: Globe,
+        title: 'Passaporte',
+        description: 'Emissão e renovação de passaporte com orientação completa.',
+        icon: IdCard,
+        tone: 'primary',
+    },
+    {
+        title: 'Documentação Internacional',
+        description: 'Apostilamento, traduções e documentos para o exterior.',
+        icon: ClipboardList,
+        tone: 'accent',
     },
 ]
 
@@ -63,8 +83,8 @@ const processSteps: ProcessStep[] = [
     },
     {
         step: '4',
-        title: 'Seu objetivo realizado',
-        description: 'Com tudo aprovado, você segue com mais segurança para a próxima etapa.',
+        title: 'Visto aprovado',
+        description: 'Com tudo aprovado, você segue com passaporte em mãos rumo ao seu sonho.',
         icon: Plane,
     },
 ]
@@ -83,6 +103,18 @@ const testimonialVideos: TestimonialVideoItem[] = [
         src: '/videos/depoimentos/depo02.mp4',
     },
 ]
+
+const highlightedVisaServices = getVisaServicesByIds(MAIN_VISA_SERVICE_IDS)
+
+const priceFormatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+})
+
+const getVisaCardStyle = (flagSrc: string) =>
+    ({
+        '--visa-card-bg-icon': `url(${flagSrc})`,
+    }) as CSSProperties
 
 export default function Home() {
     const emailHref = 'mailto:vistosprimerj@gmail.com?subject=Tirar%20d%C3%BAvidas%20sobre%20vistos%20e%20passaporte'
@@ -103,7 +135,8 @@ export default function Home() {
                             <p className={styles.eyebrow}>ASSESSORIA ESPECIALIZADA EM VISTOS E PASSAPORTE</p>
                         </div>
                         <h1 className={styles.title}>
-                            Assessoria profissional e acessível para <span className={styles.redHighlight}>vistos consulares </span>e <span className={styles.redHighlight}>passaportes</span>
+                            Assessoria profissional e acessível para <span className={styles.redHighlight}>vistos consulares </span>e <span className={styles.redHighlight}>passaportes</span> em todo
+                            Brasil
                         </h1>
                         <p className={styles.description}>Atendimento direto, seguro e organizado para cada etapa do seu processo, do primeiro documento até a aprovação.</p>
 
@@ -154,7 +187,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className={styles.processSection}>
+            <section
+                id="como-funciona"
+                className={styles.processSection}>
                 <div className={styles.processInner}>
                     <div className={`${styles.eyebrowWrapper} ${styles.processEyebrowWrapper}`}>
                         <Star
@@ -191,7 +226,9 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className={styles.testimonialsSection}>
+            <section
+                id="depoimentos"
+                className={styles.testimonialsSection}>
                 <div className={styles.testimonialsInner}>
                     <div className={`${styles.eyebrowWrapper} ${styles.processEyebrowWrapper}`}>
                         <Star
@@ -209,28 +246,120 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className={styles.featuresSection}>
-                <div className={styles.featuresInner}>
-                    {featureItems.map((item) => {
-                        const Icon = item.icon
+            <section
+                id="servicos"
+                className={styles.servicesSection}>
+                <div className={styles.servicesInner}>
+                    <div className={`${styles.eyebrowWrapper} ${styles.processEyebrowWrapper}`}>
+                        <Star
+                            className={styles.eyebrowIcon}
+                            aria-hidden="true"
+                            fill="currentColor"
+                        />
+                        <p className={styles.eyebrow}>NOSSOS SERVIÇOS</p>
+                    </div>
 
-                        return (
-                            <article
-                                key={item.title}
-                                className={styles.featureCard}>
-                                <span className={styles.featureIconWrap}>
-                                    <Icon
-                                        className={styles.featureIcon}
-                                        aria-hidden="true"
-                                    />
-                                </span>
-                                <div className={styles.featureText}>
-                                    <strong className={styles.featureTitle}>{item.title}</strong>
-                                    <p className={styles.featureDescription}>{item.description}</p>
-                                </div>
-                            </article>
-                        )
-                    })}
+                    <h2 className={styles.servicesTitle}>Soluções completas para sua viagem</h2>
+
+                    <div className={styles.servicesGrid}>
+                        {serviceItems.map((item) => {
+                            const Icon = item.icon
+                            const iconToneClass = item.tone === 'accent' ? styles.serviceIconWrapAccent : styles.serviceIconWrapPrimary
+
+                            return (
+                                <article
+                                    key={item.title}
+                                    className={`${styles.serviceCard} ui-hover-lift`}>
+                                    <span className={`${styles.serviceIconWrap} ${iconToneClass}`}>
+                                        <Icon
+                                            className={styles.serviceIcon}
+                                            aria-hidden="true"
+                                        />
+                                    </span>
+                                    <strong className={styles.serviceTitle}>{item.title}</strong>
+                                    <p className={styles.serviceDescription}>{item.description}</p>
+                                </article>
+                            )
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            <section
+                id="vistos-valores"
+                className={styles.visaPricingSection}>
+                <div className={styles.visaPricingInner}>
+                    <div className={`${styles.eyebrowWrapper} ${styles.processEyebrowWrapper}`}>
+                        <Star
+                            className={styles.eyebrowIcon}
+                            aria-hidden="true"
+                            fill="currentColor"
+                        />
+                        <p className={styles.eyebrow}>Nossos Serviços</p>
+                    </div>
+                    <h2 className={styles.visaPricingTitle}>Vistos e Valores</h2>
+
+                    <div className={styles.visaPricingGrid}>
+                        {highlightedVisaServices.map((item) => {
+                            const serviceLabel = getVisaServiceLabel(item)
+                            const hiringHref = getWhatsAppHref(`Olá! Quero contratar o serviço ${serviceLabel}.`)
+
+                            return (
+                                <article
+                                    id={`valor-${item.id}`}
+                                    data-service-id={item.id}
+                                    key={item.id}
+                                    style={getVisaCardStyle(item.flagSrc)}
+                                    className="visa-card ui-hover-lift">
+                                    <div className="visa-card__header">
+                                        <Image
+                                            src={item.flagSrc}
+                                            alt={item.flagAlt}
+                                            width={36}
+                                            height={24}
+                                            className="visa-card__flag"
+                                        />
+                                        <div className="visa-card__title-group">
+                                            <strong className="visa-card__title">
+                                                <span>{item.title}</span>
+                                                {item.subtitle ? <span>{item.subtitle}</span> : null}
+                                            </strong>
+                                            <span className="visa-card__category">{item.category}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="visa-card__price-wrap">
+                                        <strong className="visa-card__price">{priceFormatter.format(item.price)}</strong>
+                                        <span className="visa-card__caption">{item.priceCaption}</span>
+                                    </div>
+
+                                    <a
+                                        href={hiringHref}
+                                        className="visa-card__hire-button"
+                                        rel="noopener noreferrer"
+                                        target="_blank">
+                                        <MessageCircleMore
+                                            className="visa-card__button-icon"
+                                            aria-hidden="true"
+                                        />
+                                        <span>Contratar</span>
+                                    </a>
+                                </article>
+                            )
+                        })}
+                    </div>
+
+                    <div className={styles.visaPricingFooter}>
+                        <Link
+                            href="/servicos"
+                            className={styles.visaPricingAllServicesLink}>
+                            <span>Ver todos os serviços</span>
+                            <ArrowRight
+                                className="visa-card__button-icon"
+                                aria-hidden="true"
+                            />
+                        </Link>
+                    </div>
                 </div>
             </section>
         </>

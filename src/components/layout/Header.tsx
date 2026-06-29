@@ -11,9 +11,9 @@ import { WHATSAPP_HREF } from '@/lib/whatsapp'
 import styles from './Header.module.css'
 
 const navigationItems = [
-    { href: '/', label: 'Início' },
-    { href: '#', label: 'Sobre nós' },
-    { href: '#', label: 'Depoimentos' },
+    { href: '/#inicio', label: 'Início' },
+    { href: '/sobre-nos', label: 'Sobre nós' },
+    { href: '/#depoimentos', label: 'Depoimentos' },
     { href: '/servicos', label: 'Serviços' },
     { href: WHATSAPP_HREF, label: 'Fale conosco', hasWhatsAppIcon: true, isButton: true, isExternal: true },
 ]

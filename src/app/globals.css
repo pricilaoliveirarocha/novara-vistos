@@ -75,3 +75,159 @@ a:hover {
     transform: translateY(var(--hover-lift-y, -8px));
     box-shadow: var(--hover-lift-shadow, 0 20px 42px rgba(21, 18, 76, 0.1));
 }
+
+.visa-card {
+    position: relative;
+    min-height: 16rem;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 1.15rem 1.1rem 1rem;
+    border: 1px solid rgba(21, 18, 76, 0.18);
+    border-radius: 0.9rem;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.92)),
+        linear-gradient(135deg, rgba(244, 20, 28, 0.12), rgba(21, 18, 76, 0.12));
+    box-shadow:
+        0 12px 26px rgba(21, 18, 76, 0.08),
+        0 24px 52px rgba(21, 18, 76, 0.08);
+    --hover-lift-y: -7px;
+    --hover-lift-shadow: 0 22px 44px rgba(21, 18, 76, 0.14);
+}
+
+.visa-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.visa-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 0.18rem;
+    background: linear-gradient(90deg, rgba(244, 20, 28, 0.45), rgba(21, 18, 76, 0.42));
+}
+
+.visa-card::after {
+    content: '';
+    position: absolute;
+    right: -1.1rem;
+    bottom: 3.35rem;
+    z-index: 0;
+    width: 7.5rem;
+    height: 5rem;
+    background-image: var(--visa-card-bg-icon);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.08;
+    pointer-events: none;
+    transform: rotate(-8deg);
+}
+
+.visa-card__header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: 0.82rem;
+}
+
+.visa-card__flag {
+    width: 3rem;
+    height: 2rem;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.18rem;
+    box-shadow: 0 2px 6px rgba(21, 18, 76, 0.12);
+}
+
+.visa-card__title-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+}
+
+.visa-card__title {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.14;
+    overflow-wrap: anywhere;
+}
+
+.visa-card__category {
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.visa-card__price-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0 0.85rem;
+}
+
+.visa-card__price {
+    color: var(--button-red-hover);
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.visa-card__caption {
+    margin-top: 0.22rem;
+    color: var(--color-primary);
+    font-size: 0.64rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.visa-card__hire-button {
+    width: fit-content;
+    min-width: 8.25rem;
+    min-height: 2.35rem;
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+    padding: 0.64rem 0.9rem;
+    border: 1px solid rgba(244, 20, 28, 0.24);
+    border-radius: 999px;
+    background: linear-gradient(105deg, var(--button-red) 0%, #df1724 82%, #872146 118%);
+    box-shadow: 0 0.75rem 1.45rem rgba(244, 20, 28, 0.16);
+    color: #fff;
+    font-size: 0.84rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, border-color 0.2s ease;
+}
+
+.visa-card__hire-button:hover {
+    border-color: rgba(21, 18, 76, 0.18);
+    box-shadow: 0 0.9rem 1.65rem rgba(244, 20, 28, 0.22);
+    color: #fff;
+    filter: brightness(1.03);
+    transform: translateY(-1px);
+}
+
+.visa-card__button-icon {
+    width: 0.95rem;
+    height: 0.95rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .visa-card {
+        min-height: 15rem;
+    }
+}

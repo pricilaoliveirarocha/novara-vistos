@@ -390,83 +390,172 @@
     text-align: center;
 }
 
-.featuresSection {
-    padding: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-    border: none;
+.servicesSection {
+    padding: 3.25rem 0 4.5rem;
+    background: #ffffff;
 }
 
-.featuresInner {
+.servicesInner {
     width: min(100% - 2rem, 1300px);
     margin: 0 auto;
+}
+
+.servicesTitle {
+    max-width: 28ch;
+    margin: 0 auto;
+    color: var(--color-primary);
+    font-size: 2.35rem;
+    font-weight: 700;
+    line-height: 1.05;
+    text-align: center;
+    text-wrap: balance;
+}
+
+.servicesGrid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0px;
-        border: 1px solid rgba(21, 18, 76, 0.08);
-
-    border-radius: 1.6rem;
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow:
-        0 14px 32px rgba(21, 18, 76, 0.08),
-        0 28px 72px rgba(21, 18, 76, 0.12);
-    overflow: hidden;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 2rem;
 }
 
-.featureCard {
+.serviceCard {
+    min-height: 13rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
-
-    gap: 1.3rem;
-    padding: 1.7rem 0.6rem;
-    min-height: 100%;
-
+    padding: 1.35rem 0.8rem 1.15rem;
+    border: 1px solid rgba(21, 18, 76, 0.1);
+    border-radius: 0.5rem;
+    background: #ffffff;
+    box-shadow: 0 10px 28px rgba(21, 18, 76, 0.07);
+    text-align: center;
+    --hover-lift-y: -5px;
+    --hover-lift-shadow: 0 16px 34px rgba(21, 18, 76, 0.11);
 }
 
-.featureCard + .featureCard {
-    border-left: 1px solid rgba(21, 18, 76, 0.174);
-}
-
-.featureIconWrap {
-    width: 50px;
-    height: 50px;
+.serviceIconWrap {
+    width: 3.1rem;
+    height: 3.1rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border-radius: 0.95rem;
-    background: none;
-    color: var(--button-primary);
+    margin-bottom: 1.05rem;
+    border-radius: 999px;
+    color: var(--color-white);
 }
 
-.featureIcon {
-    width: 50px;
-    height: 50px;
+.serviceIconWrapPrimary {
+    background: var(--button-primary);
+    box-shadow: 0 12px 22px rgba(21, 18, 76, 0.18);
+}
+
+.serviceIconWrapAccent {
+    background: var(--button-red);
+    box-shadow: 0 12px 22px rgba(244, 20, 28, 0.18);
+}
+
+.serviceIcon {
+    width: 1.35rem;
+    height: 1.35rem;
     stroke-width: 2;
 }
 
-.featureText {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+.serviceTitle {
+    min-height: 2.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
 }
 
-.featureTitle {
+.serviceDescription {
+    max-width: 19ch;
+    margin: 0.55rem auto 0;
+    color: var(--color-muted);
+    font-size: 0.78rem;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+}
+
+.visaPricingSection {
+    padding: 0 0 5rem;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f8f9fd 100%);
+}
+
+.visaPricingInner {
+    width: min(100% - 2rem, 1300px);
+    margin: 0 auto;
+}
+
+.visaPricingTitle {
+    margin: 0;
     color: var(--color-primary);
-    font-size: 1rem;
+    font-size: 2.3rem;
     font-weight: 700;
     line-height: 1;
+    text-align: center;
 }
 
-.featureDescription {
-    margin: 0;
-    color: var(--color-muted);
-    font-size: 0.9rem;
+.visaPricingGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.15rem;
+    margin-top: 1.1rem;
+}
+
+.visaPricingAllServicesLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    min-height: 2.5rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    font-weight: 700;
     line-height: 1;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.visaPricingFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.35rem;
+}
+
+.visaPricingAllServicesLink {
+    padding: 0.85rem 1.2rem;
+    border: 1px solid rgba(21, 18, 76, 0.16);
+    background: #ffffff;
+    color: var(--button-primary);
+    box-shadow: 0 12px 26px rgba(21, 18, 76, 0.08);
+}
+
+.visaPricingAllServicesLink:hover {
+    border-color: rgba(21, 18, 76, 0.28);
+    color: var(--button-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 32px rgba(21, 18, 76, 0.12);
 }
 
 
 
+
+@media (max-width: 1100px) {
+    .servicesGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .visaPricingGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
 
 @media (max-width: 900px) {
     .hero {
@@ -531,21 +620,16 @@
         display: none;
     }
 
-    .featuresSection {
-        padding-bottom: 3rem;
+    .servicesSection {
+        padding: 3rem 0 3.75rem;
     }
 
-    .featuresInner {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .servicesGrid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .featureCard:nth-child(3),
-    .featureCard:nth-child(4) {
-        border-top: 1px solid rgba(21, 18, 76, 0.08);
-    }
-
-    .featureCard:nth-child(3) {
-        border-left: 0;
+    .visaPricingSection {
+        padding-bottom: 3.75rem;
     }
 }
 
@@ -558,26 +642,36 @@
         width: 100%;
     }
 
-    .featuresInner {
+    .servicesTitle {
+        max-width: 16ch;
+        font-size: 1.85rem;
+    }
+
+    .servicesGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.75rem;
+    }
+
+    .serviceCard {
+        min-height: 12.4rem;
+        padding: 1.2rem 0.72rem 1rem;
+    }
+
+    .serviceTitle {
+        font-size: 0.92rem;
+    }
+
+    .serviceDescription {
+        font-size: 0.76rem;
+    }
+
+    .visaPricingTitle {
+        font-size: 1.85rem;
+    }
+
+    .visaPricingGrid {
         grid-template-columns: 1fr;
-    }
-
-    .featureCard {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        padding: 2rem 1.4rem;
-        text-align: center;
-    }
-
-    .featureText {
-        align-items: center;
-        gap: 0.45rem;
-    }
-
-    .featureDescription {
-        line-height: 1.45;
+        gap: 0.75rem;
     }
 
     .processTitle {
@@ -594,13 +688,4 @@
         grid-template-columns: 1fr;
     }
 
-    .featureCard + .featureCard {
-        border-left: 0;
-        border-top: 1px solid rgba(21, 18, 76, 0.08);
-    }
-
-    .featureCard:nth-child(3),
-    .featureCard:nth-child(4) {
-        border-top: 1px solid rgba(21, 18, 76, 0.08);
-    }
 }

@@ -1,12 +1,23 @@
 import type { Metadata } from 'next'
 
+import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 
 import './globals.css'
 
 export const metadata: Metadata = {
     title: 'Vistos Prime',
-    description: 'Assessoria profissional para vistos consulares e passaportes.',
+    description: 'Assessoria profissional para vistos consulares e passaportes em todo Brasil.',
+    icons: {
+        icon: [
+            {
+                url: '/images/favicons/favicon-16x16.png',
+                sizes: '16x16',
+                type: 'image/png',
+            },
+        ],
+        shortcut: '/images/favicons/favicon-16x16.png',
+    },
 }
 
 // Exporta o layout raiz do aplicativo, que envolve todas as páginas e componentes.
@@ -22,6 +33,7 @@ export default function RootLayout({
             <body>
                 <Header />
                 <main>{children}</main>
+                <Footer />
             </body>
         </html>
     )
