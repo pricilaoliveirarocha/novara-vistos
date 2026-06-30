@@ -354,7 +354,7 @@ export default function Home() {
                                     <strong>Instagram</strong>
                                     <span>Acompanhe novidades e dicas</span>
                                 </span>
-                                <span className={styles.contactCardValue}>@vistosprimerj</span>
+                                <span className={styles.contactCardValue}>@vistosprimerj & @wkarasek</span>
                             </a>
                         </div>
                     </div>

@@ -35,15 +35,15 @@ const teamMembers = [
         name: 'Wander Karasek',
         role: 'CEO & Consultor',
         phone: '(21) 97604-0746',
-        imageSrc: '/images/team/team-member-1.svg',
-        imageAlt: 'Foto da consultora da Vistos Prime',
+        imageSrc: '/images/team/wander-karasek.png',
+        imageAlt: 'Foto do CEO e consultor da Vistos Prime',
     },
     {
         name: 'Pricila Oliveira',
         role: 'Atendimento ao cliente & Suporte',
         phone: '(21) 97604-0746',
         imageSrc: '/images/team/pricila-oliveira.jpeg',
-        imageAlt: 'Foto da especialista da Vistos Prime',
+        imageAlt: 'Foto da atendente da Vistos Prime',
     },
 ]
 
@@ -125,13 +125,15 @@ export default function AboutPage() {
                             <article
                                 key={member.name + member.role}
                                 className={`${styles.teamCard} ui-hover-lift`}>
-                                <Image
-                                    src={member.imageSrc}
-                                    alt={member.imageAlt}
-                                    width={420}
-                                    height={420}
-                                    className={styles.teamImage}
-                                />
+                                <span className={styles.teamImageWrap}>
+                                    <Image
+                                        src={member.imageSrc}
+                                        alt={member.imageAlt}
+                                        width={420}
+                                        height={420}
+                                        className={styles.teamImage}
+                                    />
+                                </span>
 
                                 <div className={styles.teamInfo}>
                                     <strong>{member.name}</strong>
