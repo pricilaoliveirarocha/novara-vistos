@@ -95,13 +95,13 @@ const processSteps: ProcessStep[] = [
 // Vídeos de depoimentos servidos a partir de public/videos/depoimentos
 const testimonialVideos: TestimonialVideoItem[] = [
     {
-        name: 'Cliente Vistos Prime',
+        name: 'Cliente WK Global Visa',
         role: 'Depoimento sobre visto americano',
         src: '/videos/depoimentos/depo01.mp4',
     },
 
     {
-        name: 'Cliente Vistos Prime',
+        name: 'Cliente WK Global Visa',
         role: 'Cliente atendido para documentação internacional',
         src: '/videos/depoimentos/depo02.mp4',
     },
@@ -188,7 +188,7 @@ export default function Home() {
                     <div className={styles.imagesColage}>
                         <Image
                             src="/images/hero/imagesColage.svg"
-                            alt="Colagem visual dos serviços da Vistos Prime"
+                            alt="Colagem visual dos serviços da WK Global Visa"
                             width={640}
                             height={640}
                             className={styles.imagesColageImage}
@@ -251,7 +251,7 @@ export default function Home() {
                     </div>
 
                     <h2 className={styles.testimonialsTitle}>Histórias de clientes que confiaram na gente</h2>
-                    <p className={styles.testimonialsDescription}>Dê play e assista aos depoimentos, quem sabe o próximo pode ser você contando a sua história de sucesso com a Vistos Prime.</p>
+                    <p className={styles.testimonialsDescription}>Dê play e assista aos depoimentos, quem sabe o próximo pode ser você contando a sua história de sucesso com a WK Global Visa.</p>
 
                     <TestimonialCarousel items={testimonialVideos} />
                 </div>

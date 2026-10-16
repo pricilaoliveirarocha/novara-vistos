@@ -8,8 +8,8 @@ import { WHATSAPP_HREF } from '@/lib/whatsapp'
 import styles from './sobre-nos.module.css'
 
 export const metadata: Metadata = {
-    title: 'Sobre nós | Vistos Prime',
-    description: 'Conheça a Vistos Prime e nossa forma de cuidar de processos de vistos, passaportes e autorizações internacionais.',
+    title: 'Sobre nós | WK Global Visa',
+    description: 'Conheça a WK Global Visa e nossa forma de cuidar de processos de vistos, passaportes e autorizações internacionais.',
 }
 
 const pillars = [
@@ -36,14 +36,14 @@ const teamMembers = [
         role: 'CEO & Consultor',
         phone: '(21) 97604-0746',
         imageSrc: '/images/team/wander-karasek.png',
-        imageAlt: 'Foto do CEO e consultor da Vistos Prime',
+        imageAlt: 'Foto do CEO e consultor da WK Global Visa',
     },
     {
         name: 'Pricila Oliveira',
         role: 'Atendimento ao cliente & Suporte',
         phone: '(21) 97604-0746',
         imageSrc: '/images/team/pricila-oliveira.jpeg',
-        imageAlt: 'Foto da atendente da Vistos Prime',
+        imageAlt: 'Foto da atendente da WK Global Visa',
     },
 ]
 

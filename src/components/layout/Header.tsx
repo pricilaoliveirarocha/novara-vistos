@@ -27,11 +27,11 @@ export default function Header() {
                 <Link
                     href="/"
                     className={styles.brand}
-                    aria-label="Vistos Prime"
+                    aria-label="WK Global Visa - Voltar para o início"
                     onClick={() => setIsMenuOpen(false)}>
                     <Image
                         src="/images/logo.svg"
-                        alt="Vistos Prime"
+                        alt="WK Global Visa"
                         width={56}
                         height={56}
                         className={styles.logoBox}

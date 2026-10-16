@@ -23,7 +23,7 @@ export default function Footer() {
                     <Link
                         href="/#inicio"
                         className={styles.brand}
-                        aria-label="Vistos Prime">
+                        aria-label="WK Global Visa - Voltar para o início">
                         <Image
                             src="/images/logo.svg"
                             alt=""
@@ -40,21 +40,21 @@ export default function Footer() {
 
                 <div className={styles.aboutColumn}>
                     <h2 className={styles.heading}>Sobre nós</h2>
-                    <p className={styles.text}>A Vistos Prime é especializada em assessoria para vistos, passaportes e documentação internacional, oferecendo atendimento claro, direto e eficiente.</p>
+                    <p className={styles.text}>A WK Global Visa é especializada em assessoria para vistos, passaportes e documentação internacional, oferecendo atendimento claro, direto e eficiente.</p>
 
                     <div className={styles.socialLinks}>
                         <a
                             href={WHATSAPP_HREF}
                             className={styles.socialLink}
-                            aria-label="WhatsApp da Vistos Prime"
+                            aria-label="WhatsApp da WK Global Visa"
                             rel="noopener noreferrer"
                             target="_blank">
                             <FaWhatsapp aria-hidden="true" />
                         </a>
                         <a
-                            href="https://www.instagram.com/vistosprimerj"
+                            href="https://www.instagram.com/wkglobalvisa"
                             className={styles.socialLink}
-                            aria-label="Instagram da Vistos Prime"
+                            aria-label="Instagram da WK Global Visa"
                             rel="noopener noreferrer"
                             target="_blank">
                             <FaInstagram aria-hidden="true" />
@@ -112,7 +112,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <p className={styles.copyright}>© 2026 Vistos Prime. Todos os direitos reservados.</p>
+            <p className={styles.copyright}>© 2026 WK Global Visa. Todos os direitos reservados.</p>
         </footer>
     )
 }

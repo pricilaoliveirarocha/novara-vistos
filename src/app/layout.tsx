@@ -6,7 +6,7 @@ import Header from '@/components/layout/Header'
 import './globals.css'
 
 export const metadata: Metadata = {
-    title: 'Vistos Prime',
+    title: 'WK Global Visa',
     description: 'Assessoria profissional para vistos consulares e passaportes em todo Brasil.',
     icons: {
         icon: [

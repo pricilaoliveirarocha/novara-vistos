@@ -51,7 +51,7 @@ export default function QuickEmailForm() {
                 body: JSON.stringify({
                     access_key: accessKey,
                     botcheck: false,
-                    from_name: 'Vistos Prime',
+                    from_name: 'WK Global Visa',
                     subject: `[Site] ${subject}`,
                     name,
                     email,

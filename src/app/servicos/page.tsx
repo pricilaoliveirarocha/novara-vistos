@@ -7,8 +7,8 @@ import ServicesCatalog from './ServicesCatalog'
 import styles from './servicos.module.css'
 
 export const metadata: Metadata = {
-    title: 'Serviços | Vistos Prime',
-    description: 'Consulte os serviços de vistos, autorizações e passaporte disponíveis na Vistos Prime.',
+    title: 'Serviços | WK Global Visa',
+    description: 'Consulte os serviços de vistos, autorizações e passaporte disponíveis na WK Global Visa.',
 }
 
 export default function ServicesPage() {
