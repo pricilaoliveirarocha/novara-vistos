@@ -68,7 +68,7 @@ export default function AboutPage() {
                     </div>
 
                     <p className={styles.description}>
-                        A VistosPrime descomplica a emissão de vistos, passaportes e autorizações internacionais. Combinamos atendimento humanizado, processos inteligentes e suporte completo do início
+                        A WK Global Visa descomplica a emissão de vistos, passaportes e autorizações internacionais. Combinamos atendimento humanizado, processos inteligentes e suporte completo do início
                         ao fim para que a sua única preocupação seja arrumar as malas.
                     </p>
                 </div>
