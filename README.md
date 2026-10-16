@@ -1,6 +1,6 @@
 <div align="center">
 
-# WK Global Visa ✿
+# WK Global Visa
 
 **Assessoria em vistos, passaportes e documentação internacional.**
 
