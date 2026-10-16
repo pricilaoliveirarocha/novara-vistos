@@ -94,13 +94,13 @@ export default function Footer() {
                                 (21) 97604-0746
                             </a>
                         </li>
-                        <li>
+                        {/* <li>
                             <Mail
                                 className={styles.contactIcon}
                                 aria-hidden="true"
                             />
                             <a href="mailto:vistosprimerj@gmail.com">vistosprimerj@gmail.com</a>
-                        </li>
+                        </li> */}
                         <li>
                             <MapPin
                                 className={styles.contactIcon}
