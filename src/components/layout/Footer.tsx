@@ -32,8 +32,8 @@ export default function Footer() {
                             className={styles.logo}
                         />
                         <span className={styles.wordmark}>
-                            Vistos<br></br>
-                            <span>Prime</span>
+                            WK<br></br>
+                            <span>Global Visa</span>
                         </span>
                     </Link>
                 </div>
