@@ -12,23 +12,23 @@ Website institucional desenvolvido para apresentar os serviços da WK Global Vis
 
 ---
 
-### Sobre o projeto
+### 🌷 Sobre o projeto
 
 Uma experiência web responsiva, com navegação intuitiva e informações organizadas para quem procura orientação em processos consulares.
 
-### O que você encontra por aqui
+### ✨ O que você encontra por aqui
 
-- Busca e catálogo de serviços de vistos
-- Informações sobre passaportes e documentação internacional
-- Etapas do atendimento
-- Depoimentos em vídeo
-- Contato por WhatsApp e e-mail
+- 🔎 Busca e catálogo de serviços de vistos
+- 🛂 Informações sobre passaportes e documentação internacional
+- 📋 Etapas do atendimento
+- 🎥 Depoimentos em vídeo
+- 💌 Contato por WhatsApp e e-mail
 
-### Tecnologias
+### 💻 Tecnologias
 
 `Next.js` · `React` · `TypeScript` · `Bootstrap` · `CSS Modules` · `Lucide Icons`
 
-### Executando o projeto
+### 🚀 Executando o projeto
 
 ```bash
 git clone https://github.com/pricilaoliveirarocha/wk-global-visa.git
