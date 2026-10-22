@@ -1,16 +1,17 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
 import {
   ArrowLeft, ArrowRight, BookOpenCheck, BriefcaseBusiness, Check, CircleUserRound,
   FileCheck2, Files, FolderOpen, GraduationCap, MapPin,
   MessageCircleMore, Plane, ShieldCheck, Sparkles, Stamp, UsersRound
 } from 'lucide-react'
-import GoldButton from '../components/ui/GoldButton'
 import SectionTitle from '../components/ui/SectionTitle'
 import { site } from '../data/site'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin)
 
 const steps = [
   { title: 'Fale conosco', copy: 'Tire suas dúvidas com um especialista.', icon: MessageCircleMore },
@@ -31,26 +32,63 @@ const testimonials = [
   { quote: 'Consegui meu visto sem complicações!', name: 'Mariana Silva', service: 'Visto Americano — Turismo', image: '/images/client.jpg' },
 ]
 
+function FlightPlane() {
+  const id = useId()
+  return <svg viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id={`${id}-wing`} x1="16" y1="34" x2="74" y2="70" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#fff0c5" /><stop offset=".42" stopColor="#d5b476" /><stop offset=".7" stopColor="#f0d49c" /><stop offset="1" stopColor="#a67a3f" />
+      </linearGradient>
+      <linearGradient id={`${id}-body`} x1="42" y1="45" x2="54" y2="45" gradientUnits="userSpaceOnUse">
+        <stop stopColor="#ad8146" /><stop offset=".3" stopColor="#efd6a3" /><stop offset=".52" stopColor="#fff4d8" /><stop offset=".78" stopColor="#dfc18a" /><stop offset="1" stopColor="#a67a40" />
+      </linearGradient>
+      <linearGradient id={`${id}-engine`} x1="0" y1="0" x2="1" y2="0">
+        <stop stopColor="#8e683b" /><stop offset=".48" stopColor="#f6dfaf" /><stop offset="1" stopColor="#be975d" />
+      </linearGradient>
+    </defs>
+    <g transform="rotate(45 48 48)" strokeLinejoin="round">
+      <g fill={`url(#${id}-engine)`} stroke="#99733f" strokeWidth=".65">
+        <rect x="27" y="44" width="6" height="17" rx="3" />
+        <rect x="63" y="44" width="6" height="17" rx="3" />
+      </g>
+      <path d="M43 31 9 59Q7 61 8 64L43 53H53L88 64Q89 61 87 59L53 31Z" fill={`url(#${id}-wing)`} stroke="#a37b44" strokeWidth=".8" />
+      <path d="M43 35 12 59M53 35 84 59" stroke="#fff0ce" strokeWidth=".85" strokeLinecap="round" opacity=".8" />
+      <path d="M41 48 22 59M55 48 74 59" stroke="#8d6b3e" strokeWidth=".65" opacity=".5" />
+      <path d="M44 69 32 81V86L45 82H51L64 86V81L52 69Z" fill={`url(#${id}-wing)`} stroke="#9e7741" strokeWidth=".75" />
+      <path d="M48 6C43 6 42 17 42 26V63L44 79 46 89Q48 92 50 89L52 79 54 63V26C54 17 53 6 48 6Z" fill={`url(#${id}-body)`} stroke="#a17b45" strokeWidth=".75" />
+      <path d="M44.5 17Q48 14 51.5 17L51 21Q48 19.3 45 21Z" fill="#243748" stroke="#f5dfb2" strokeWidth=".5" />
+      <path d="M48 8V13M48 25V70" stroke="#fff8e7" strokeWidth=".8" strokeLinecap="round" opacity=".7" />
+      {[28, 34, 40, 46, 52, 58].map(y => <g key={y} fill="#685c49" opacity=".7"><rect x="43.8" y={y} width="1.2" height="2.5" rx=".6" /><rect x="51" y={y} width="1.2" height="2.5" rx=".6" /></g>)}
+      <path d="M48 71 46.5 85 48 89 49.5 85Z" fill="#ba9258" />
+      <path d="M48 73V87" stroke="#fff0c9" strokeWidth=".65" />
+      <path d="M9 59 8 64M87 59 88 64" stroke="#fff0c5" strokeWidth="1.1" strokeLinecap="round" />
+    </g>
+  </svg>
+}
+
 function Hero() {
   return <section id="inicio" className="hero">
     <div className="hero-map" aria-hidden="true" />
-    <div className="orbit orbit-one" aria-hidden="true" /><div className="orbit orbit-two" aria-hidden="true" />
+    <svg className="hero-routes" viewBox="0 0 430 650" fill="none" aria-hidden="true">
+      <path d="M420 4C174-28-62 117 43 403C89 531 205 622 329 682" />
+      <path d="M396 13C143-7-30 157 73 424C119 544 231 621 360 671" />
+      <path className="hero-flight-path" d="M9 178C104 225 156 312 226 428C278 514 350 582 425 613" />
+    </svg>
+    <svg width="0" height="0" className="hero-clip" aria-hidden="true"><defs><clipPath id="hero-photo-clip" clipPathUnits="objectBoundingBox"><path d="M.13,1C.06,.78,-.065,.43,.035,.20C.10,.045,.24,-.035,.43,.025C.67,.105,.85,.115,1,0L1,1Z" /></clipPath></defs></svg>
     <div className="container hero-grid">
       <div className="hero-copy">
         <p className="eyebrow">Assessoria de vistos consulares</p>
         <h1><span>Seu mundo,</span><span><em>sem fronteiras.</em></span></h1>
         <p className="hero-description">Cuidamos de todo o processo para você conquistar seus vistos e passaportes com segurança, praticidade e acompanhamento especializado.</p>
-        <GoldButton href={site.whatsapp}>Fale com um especialista</GoldButton>
-        <div className="social-proof">
-          <div className="avatar-stack"><img src="/images/client.jpg" alt="Cliente Novara" /><img src="/images/client-2.jpg" alt="" /><img src="/images/client-3.jpg" alt="" /><img src="/images/client-4.jpg" alt="" /></div>
-          <p><b>+ de 1.000 clientes atendidos</b><span>em todo o Brasil</span></p>
-        </div>
+        <a className="gold-button hero-button" href={site.whatsapp} target="_blank" rel="noreferrer">
+          <svg className="hero-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.8a8.5 8.5 0 1 1 16.2-4Z" /><path d="M8.1 7.5c.2-.4.5-.4.8-.4h.5l1 2.2c.1.3-.4.9-.8 1.2.7 1.5 1.9 2.7 3.5 3.3.3-.4.8-1.1 1.1-1l2.2 1c.3.1.3.5.2.9-.2 1-1.1 1.6-2.1 1.5-3.6-.4-7.3-3.9-7.5-6.9 0-.7.5-1.5 1.1-1.8Z" strokeWidth="1.3" /></svg>
+          <span>Fale com um especialista</span><ArrowRight className="button-arrow" size={18} aria-hidden="true" />
+        </a>
       </div>
-      <div className="hero-visual">
-        <div className="photo-ring"><img src="/images/novara-hero.png" alt="Passaporte brasileiro diante de Westminster, em Londres" fetchPriority="high" /></div>
-        <Plane className="floating-plane" aria-hidden="true" />
-        <p className="hand-note">Novos destinos.<br />Grandes histórias.</p>
-      </div>
+    </div>
+    <div className="hero-visual">
+      <div className="photo-ring"><img src="/images/novara-hero.png" alt="Mão segurando um passaporte brasileiro com cartão de embarque diante de Westminster, em Londres, ao pôr do sol" width="1672" height="941" fetchPriority="high" /></div>
+      <span className="floating-plane" aria-hidden="true"><FlightPlane /></span>
     </div>
   </section>
 }
@@ -95,6 +133,8 @@ function Pricing() {
 
 export default function Home() {
   const root = useRef(null)
+  const flight = useRef(null)
+  const smoke = useRef(null)
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(window.location.search).has('reduced')) return
     const ctx = gsap.context(() => {
@@ -104,8 +144,7 @@ export default function Home() {
         .from('.hero h1 span', { yPercent: 115, opacity: 0, duration: .85, stagger: .12 }, '-=.25')
         .from('.hero-description, .hero-copy .gold-button', { y: 18, opacity: 0, duration: .6, stagger: .12 }, '-=.45')
         .from('.photo-ring', { x: 45, scale: .94, opacity: 0, duration: 1.15 }, '-=1')
-        .from('.social-proof img', { scale: 0, opacity: 0, stagger: .08, duration: .35 }, '-=.45')
-      gsap.to('.floating-plane', { x: 12, y: -7, rotation: -7, duration: 3.5, repeat: -1, yoyo: true, ease: 'sine.inOut' })
+        .from('.floating-plane', { opacity: 0, duration: .65 }, '-=.4')
       gsap.utils.toArray('.reveal-heading').forEach(el => gsap.from(el.children, { scrollTrigger: { trigger: el, start: 'top 84%' }, y: 35, opacity: 0, duration: .75, stagger: .1 }))
       gsap.from('.step', { scrollTrigger: { trigger: '.steps', start: 'top 80%' }, y: 35, opacity: 0, stagger: .14, duration: .7 })
       gsap.from('.service-card', { scrollTrigger: { trigger: '.service-grid', start: 'top 82%' }, y: 45, opacity: 0, stagger: .12, duration: .75 })
@@ -113,5 +152,93 @@ export default function Home() {
     }, root)
     return () => ctx.revert()
   }, [])
-  return <div ref={root}><Hero /><TrustBar /><Journey /><Services /><Testimonials /><Why /><Pricing /></div>
+
+  useLayoutEffect(() => {
+    if (new URLSearchParams(window.location.search).has('reduced')) return
+    const motion = gsap.matchMedia()
+    motion.add('(prefers-reduced-motion: no-preference)', () => {
+      const anchor = root.current.querySelector('.floating-plane')
+      const plane = flight.current
+      const puffs = [...smoke.current.children]
+      let puffIndex = 0
+      let previous = null
+      let lastEmission = 0
+      gsap.set(anchor, { visibility: 'hidden' })
+      gsap.set(plane, { autoAlpha: 1, transformOrigin: '50% 50%' })
+
+      // O portal mantém o avião fora dos recortes da hero durante todo o voo.
+      const journey = gsap.timeline({
+        scrollTrigger: {
+          start: 0,
+          end: 'max',
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+        },
+        defaults: { ease: 'none' },
+        onUpdate: () => {
+          const now = performance.now()
+          if (now - lastEmission < 35) return
+          const size = plane.offsetWidth
+          const x = Number(gsap.getProperty(plane, 'x')) + size / 2
+          const y = Number(gsap.getProperty(plane, 'y')) + size / 2
+          if (!previous) { previous = { x, y }; return }
+          const distance = Math.hypot(x - previous.x, y - previous.y)
+          if (distance < 3) return
+          // Reutiliza as partículas e emite apenas enquanto o avião se move.
+          const angle = (Number(gsap.getProperty(plane, 'rotation')) - 45) * Math.PI / 180
+          const tail = size * Number(gsap.getProperty(plane, 'scale')) * .34
+          const count = Math.min(6, Math.ceil(distance / 10))
+          for (let i = 1; i <= count; i++) {
+            const puff = puffs[puffIndex++ % puffs.length]
+            const px = previous.x + (x - previous.x) * i / count - Math.cos(angle) * tail - 7
+            const py = previous.y + (y - previous.y) * i / count - Math.sin(angle) * tail - 7
+            gsap.killTweensOf(puff)
+            gsap.fromTo(puff, { x: px, y: py, scale: .3, opacity: .35 }, {
+              x: px - Math.cos(angle) * 15 + Math.random() * 8 - 4,
+              y: py - Math.sin(angle) * 15 - 8,
+              scale: 1.8,
+              opacity: 0,
+              duration: 1.5,
+              ease: 'power1.out',
+            })
+          }
+          previous = { x, y }
+          lastEmission = now
+        },
+      })
+      journey.to(plane, {
+        duration: 1,
+        motionPath: () => {
+          const rect = anchor.getBoundingClientRect()
+          const width = window.innerWidth
+          const height = window.innerHeight
+          const right = Math.max(18, width - rect.width - 18)
+          const bottom = Math.max(18, height - rect.height - 24)
+          const startY = rect.top + window.scrollY
+          return {
+            path: [
+              { x: rect.left, y: startY },
+              { x: Math.min(right, rect.left + width * .13), y: startY + height * .09 },
+              { x: right, y: bottom * .42 },
+              { x: right * .7, y: bottom * .65 },
+              { x: 18, y: bottom * .52 },
+              { x: right * .15, y: bottom * .3 },
+              { x: right * .8, y: bottom * .45 },
+              { x: right, y: bottom * .8 },
+            ],
+            curviness: 1.15,
+            autoRotate: 45,
+          }
+        },
+      }, 0)
+        .to(plane, { scale: .65, duration: .12 }, 0)
+      return () => {
+        gsap.killTweensOf(puffs)
+        gsap.set(puffs, { clearProps: 'all' })
+      }
+    }, root)
+    return () => motion.revert()
+  }, [])
+
+  return <><div ref={root}><Hero /><TrustBar /><Journey /><Services /><Testimonials /><Why /><Pricing /></div>{createPortal(<><div ref={smoke} className="plane-smoke" aria-hidden="true">{Array.from({ length: 48 }, (_, i) => <i key={i} />)}</div><div ref={flight} className="plane-flight" aria-hidden="true"><FlightPlane /></div></>, document.body)}</>
 }
