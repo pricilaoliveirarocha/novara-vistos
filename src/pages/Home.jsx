@@ -88,7 +88,6 @@ function Hero() {
     </div>
     <div className="hero-visual">
       <div className="photo-ring"><img src="/images/novara-hero.png" alt="Mão segurando um passaporte brasileiro com cartão de embarque diante de Westminster, em Londres, ao pôr do sol" width="1672" height="941" fetchPriority="high" /></div>
-      <span className="floating-plane" aria-hidden="true"><FlightPlane /></span>
     </div>
   </section>
 }
@@ -134,7 +133,8 @@ function Pricing() {
 export default function Home() {
   const root = useRef(null)
   const flight = useRef(null)
-  const smoke = useRef(null)
+  const routeSvg = useRef(null)
+  const routePath = useRef(null)
   useLayoutEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || new URLSearchParams(window.location.search).has('reduced')) return
     const ctx = gsap.context(() => {
@@ -144,7 +144,6 @@ export default function Home() {
         .from('.hero h1 span', { yPercent: 115, opacity: 0, duration: .85, stagger: .12 }, '-=.25')
         .from('.hero-description, .hero-copy .gold-button', { y: 18, opacity: 0, duration: .6, stagger: .12 }, '-=.45')
         .from('.photo-ring', { x: 45, scale: .94, opacity: 0, duration: 1.15 }, '-=1')
-        .from('.floating-plane', { opacity: 0, duration: .65 }, '-=.4')
       gsap.utils.toArray('.reveal-heading').forEach(el => gsap.from(el.children, { scrollTrigger: { trigger: el, start: 'top 84%' }, y: 35, opacity: 0, duration: .75, stagger: .1 }))
       gsap.from('.step', { scrollTrigger: { trigger: '.steps', start: 'top 80%' }, y: 35, opacity: 0, stagger: .14, duration: .7 })
       gsap.from('.service-card', { scrollTrigger: { trigger: '.service-grid', start: 'top 82%' }, y: 45, opacity: 0, stagger: .12, duration: .75 })
@@ -154,91 +153,126 @@ export default function Home() {
   }, [])
 
   useLayoutEffect(() => {
-    if (new URLSearchParams(window.location.search).has('reduced')) return
     const motion = gsap.matchMedia()
-    motion.add('(prefers-reduced-motion: no-preference)', () => {
-      const anchor = root.current.querySelector('.floating-plane')
+    motion.add({ reduced: '(prefers-reduced-motion: reduce)', full: '(prefers-reduced-motion: no-preference)' }, (context) => {
       const plane = flight.current
-      const puffs = [...smoke.current.children]
-      let puffIndex = 0
-      let previous = null
-      let lastEmission = 0
-      gsap.set(anchor, { visibility: 'hidden' })
-      gsap.set(plane, { autoAlpha: 1, transformOrigin: '50% 50%' })
+      const svg = routeSvg.current
+      const path = routePath.current
+      const brand = document.querySelector('.header .brand')
+      const header = document.querySelector('.header-inner')
+      const footer = document.querySelector('.footer')
+      const destination = document.querySelector('[data-flight-destination]')
+      if (!brand || !header || !footer || !destination) return
 
-      // O portal mantém o avião fora dos recortes da hero durante todo o voo.
-      const journey = gsap.timeline({
-        scrollTrigger: {
-          start: 0,
-          end: 'max',
-          scrub: 1.2,
-          invalidateOnRefresh: true,
-        },
-        defaults: { ease: 'none' },
-        onUpdate: () => {
-          const now = performance.now()
-          if (now - lastEmission < 35) return
-          const size = plane.offsetWidth
-          const x = Number(gsap.getProperty(plane, 'x')) + size / 2
-          const y = Number(gsap.getProperty(plane, 'y')) + size / 2
-          if (!previous) { previous = { x, y }; return }
-          const distance = Math.hypot(x - previous.x, y - previous.y)
-          if (distance < 3) return
-          // Reutiliza as partículas e emite apenas enquanto o avião se move.
-          const angle = (Number(gsap.getProperty(plane, 'rotation')) - 45) * Math.PI / 180
-          const tail = size * Number(gsap.getProperty(plane, 'scale')) * .34
-          const count = Math.min(6, Math.ceil(distance / 10))
-          for (let i = 1; i <= count; i++) {
-            const puff = puffs[puffIndex++ % puffs.length]
-            const px = previous.x + (x - previous.x) * i / count - Math.cos(angle) * tail - 7
-            const py = previous.y + (y - previous.y) * i / count - Math.sin(angle) * tail - 7
-            gsap.killTweensOf(puff)
-            gsap.fromTo(puff, { x: px, y: py, scale: .3, opacity: .35 }, {
-              x: px - Math.cos(angle) * 15 + Math.random() * 8 - 4,
-              y: py - Math.sin(angle) * 15 - 8,
-              scale: 1.8,
-              opacity: 0,
-              duration: 1.5,
-              ease: 'power1.out',
-            })
+      const reduced = context.conditions.reduced || new URLSearchParams(window.location.search).has('reduced')
+      const geometry = {}
+      let journey
+      let disposed = false
+      let refreshFrame
+
+      const measure = () => {
+        const width = document.documentElement.clientWidth
+        const height = window.innerHeight
+        const size = plane.offsetWidth
+        const origin = brand.getBoundingClientRect()
+        const target = destination.getBoundingClientRect()
+        const pageHeight = Math.max(height, footer.getBoundingClientRect().bottom + window.scrollY)
+        const startX = Math.min(origin.right + size * .65, width - size / 2 - 12)
+        const startY = header.offsetHeight / 2
+        const endX = target.left + target.width / 2
+        const endY = target.top + window.scrollY + target.height / 2
+        const right = width - Math.max(size * .25 + 4, Math.min(60, width * .04))
+        const sway = Math.min(38, Math.max(3, (width - 680) * .05))
+        const cruiseY = Math.min(height * .36, endY * .2)
+        const span = endY - cruiseY
+        const d = `M${startX},${startY}
+          C${startX + 55},${startY} ${width * .6},${startY + 45} ${right},${cruiseY}
+          C${right - sway},${cruiseY + span * .15} ${right},${cruiseY + span * .22} ${right - sway * .2},${cruiseY + span * .34}
+          S${right - sway * .8},${cruiseY + span * .53} ${right},${cruiseY + span * .68}
+          C${right},${cruiseY + span * .8} ${right - sway * .25},${endY - 170} ${endX - 70},${endY - 60}
+          C${endX - 48},${endY - 22} ${endX - 26},${endY} ${endX},${endY}`
+        svg.setAttribute('viewBox', `0 0 ${width} ${pageHeight}`)
+        svg.setAttribute('height', pageHeight)
+        path.setAttribute('d', d)
+        geometry.length = path.getTotalLength()
+        geometry.maxScroll = Math.max(1, pageHeight - height)
+        geometry.startX = startX
+        geometry.startY = startY
+        geometry.landingY = endY - geometry.maxScroll
+        const rawPath = MotionPathPlugin.cacheRawPathMeasurements(MotionPathPlugin.getRawPath(path), 48)
+        geometry.samples = Array.from({ length: 501 }, (_, i) => MotionPathPlugin.getPositionOnPath(rawPath, i / 500).y)
+        if (reduced || !journey || journey.progress() === 0) {
+          gsap.set(plane, { x: startX, y: startY, rotation: reduced ? 20 : 45, scale: reduced ? .75 : 1 })
+        }
+      }
+
+      measure()
+      gsap.set(svg, { autoAlpha: reduced ? 0 : 1 })
+      gsap.set(plane, { autoAlpha: 1, xPercent: -50, yPercent: -50, transformOrigin: '50% 50%' })
+      if (!reduced) {
+        // Mantem o aviao no viewport, mesmo quando a curva tem trechos mais horizontais.
+        const pathProgress = (progress) => {
+          if (progress <= 0) return 0
+          if (progress >= 1) return 1
+          const screenY = (p) => geometry.startY + (geometry.landingY - geometry.startY) * (1 - Math.cos(Math.PI * p)) / 2
+          let targetY = geometry.maxScroll * progress + screenY(progress)
+          if (progress < .15) targetY -= 24 * Math.sin(Math.PI * progress / .15)
+          if (progress > .98) {
+            const approach = geometry.maxScroll * .98 + screenY(.98)
+            const end = geometry.maxScroll + geometry.landingY
+            targetY = end - (end - approach) * ((1 - progress) / .02) ** 3
           }
-          previous = { x, y }
-          lastEmission = now
-        },
-      })
-      journey.to(plane, {
-        duration: 1,
-        motionPath: () => {
-          const rect = anchor.getBoundingClientRect()
-          const width = window.innerWidth
-          const height = window.innerHeight
-          const right = Math.max(18, width - rect.width - 18)
-          const bottom = Math.max(18, height - rect.height - 24)
-          const startY = rect.top + window.scrollY
-          return {
-            path: [
-              { x: rect.left, y: startY },
-              { x: Math.min(right, rect.left + width * .13), y: startY + height * .09 },
-              { x: right, y: bottom * .42 },
-              { x: right * .7, y: bottom * .65 },
-              { x: 18, y: bottom * .52 },
-              { x: right * .15, y: bottom * .3 },
-              { x: right * .8, y: bottom * .45 },
-              { x: right, y: bottom * .8 },
-            ],
-            curviness: 1.15,
-            autoRotate: 45,
+          const samples = geometry.samples
+          let low = 0
+          let high = samples.length - 1
+          while (high - low > 1) {
+            const middle = (low + high) >> 1
+            if (samples[middle] < targetY) low = middle
+            else high = middle
           }
-        },
-      }, 0)
-        .to(plane, { scale: .65, duration: .12 }, 0)
+          const fraction = (targetY - samples[low]) / (samples[high] - samples[low] || 1)
+          return (low + Math.max(0, Math.min(1, fraction))) / (samples.length - 1)
+        }
+        journey = gsap.timeline({
+          scrollTrigger: {
+            id: 'novara-flight',
+            start: 0,
+            end: () => geometry.maxScroll,
+            scrub: .7,
+            invalidateOnRefresh: true,
+            onRefreshInit: measure,
+          },
+          defaults: { ease: 'none' },
+        })
+        journey
+          .to(plane, { duration: 1, ease: pathProgress, motionPath: () => ({ path, autoRotate: 45, resolution: 48 }) }, 0)
+          .fromTo(path, { strokeDasharray: () => geometry.length, strokeDashoffset: () => geometry.length }, { strokeDashoffset: 0, autoRound: false, duration: 1, ease: pathProgress }, 0)
+          .fromTo(plane, { scale: 1 }, { scale: () => window.innerWidth <= 680 ? .45 : .62, duration: .05, ease: 'power1.out' }, 0)
+          .to(plane, { scale: () => window.innerWidth <= 680 ? .4 : .48, duration: .02, ease: 'power2.out' }, .98)
+          .fromTo(destination, { '--arrival-glow': 0 }, { '--arrival-glow': 1, duration: .02 }, .98)
+      }
+
+      // Recalcula o percurso quando fontes, imagens ou o layout mudam de tamanho.
+      const refresh = () => {
+        cancelAnimationFrame(refreshFrame)
+        refreshFrame = requestAnimationFrame(() => {
+          if (journey) ScrollTrigger.refresh()
+          else measure()
+        })
+      }
+      const observer = new ResizeObserver(refresh)
+      observer.observe(root.current)
+      observer.observe(footer)
+      observer.observe(brand)
+      document.fonts.ready.then(() => { if (!disposed) refresh() })
       return () => {
-        gsap.killTweensOf(puffs)
-        gsap.set(puffs, { clearProps: 'all' })
+        disposed = true
+        cancelAnimationFrame(refreshFrame)
+        observer.disconnect()
       }
     }, root)
     return () => motion.revert()
   }, [])
 
-  return <><div ref={root}><Hero /><TrustBar /><Journey /><Services /><Testimonials /><Why /><Pricing /></div>{createPortal(<><div ref={smoke} className="plane-smoke" aria-hidden="true">{Array.from({ length: 48 }, (_, i) => <i key={i} />)}</div><div ref={flight} className="plane-flight" aria-hidden="true"><FlightPlane /></div></>, document.body)}</>
+  return <><div ref={root}><Hero /><TrustBar /><Journey /><Services /><Testimonials /><Why /><Pricing /></div>{createPortal(<div className="flight-journey" aria-hidden="true"><svg ref={routeSvg} className="flight-route" preserveAspectRatio="none" fill="none"><path ref={routePath} /></svg><div ref={flight} className="plane-flight"><FlightPlane /></div></div>, document.body)}</>
 }

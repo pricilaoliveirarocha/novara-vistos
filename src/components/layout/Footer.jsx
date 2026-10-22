@@ -29,7 +29,10 @@ export default function Footer() {
         <nav aria-label="Navegação do rodapé">{site.nav.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
         <p>Seu mundo, <em>sem fronteiras.</em></p>
       </div>
-      <div className="socials" aria-label="Redes sociais"><a href="#instagram" aria-label="Instagram"><SocialIcon type="instagram" /></a><a href="#facebook" aria-label="Facebook"><SocialIcon type="facebook" /></a><a href="#youtube" aria-label="YouTube"><SocialIcon type="youtube" /></a></div>
+      <div className="footer-arrival">
+        <div className="socials" aria-label="Redes sociais"><a href="#instagram" aria-label="Instagram"><SocialIcon type="instagram" /></a><a href="#facebook" aria-label="Facebook"><SocialIcon type="facebook" /></a><a href="#youtube" aria-label="YouTube"><SocialIcon type="youtube" /></a></div>
+        <span className="flight-destination" data-flight-destination aria-hidden="true"><span /></span>
+      </div>
     </div>
     <div className="container footer-bottom"><span>© 2026 Novara Vistos. Todos os direitos reservados.</span><span><a href="#privacidade">Política de Privacidade</a><i /> <a href="#termos">Termos de Uso</a></span></div>
   </footer>
