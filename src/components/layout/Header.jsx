@@ -5,17 +5,20 @@ import { site } from '../../data/site'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/'
+  const isActive = (href) => href === '/sobre' ? currentPath === '/sobre' : href === '/' && currentPath === '/'
+  const navItems = currentPath === '/' ? site.nav.filter(item => item.label !== 'Serviços') : site.nav
   return <header className="header" data-open={open}>
     <div className="container header-inner">
       <Brand />
       <nav className="desktop-nav" aria-label="Navegação principal">
-        {site.nav.map((item, index) => <a className={index === 0 ? 'active' : ''} key={item.href} href={item.href}>{item.label}</a>)}
+        {navItems.map(item => <a className={isActive(item.href) ? 'active' : ''} key={item.href} href={item.href}>{item.label}</a>)}
       </nav>
-      <span className="header-balance" aria-hidden="true" />
+      <span className="header-spacer" aria-hidden="true" />
       <button className="menu-toggle" aria-label={open ? 'Fechar menu' : 'Abrir menu'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </div>
     <nav className="mobile-nav" aria-label="Navegação móvel">
-      {site.nav.map(item => <a key={item.href} onClick={() => setOpen(false)} href={item.href}>{item.label}</a>)}
+      {navItems.map(item => <a key={item.href} onClick={() => setOpen(false)} href={item.href}>{item.label}</a>)}
     </nav>
   </header>
 }

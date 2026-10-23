@@ -1,6 +1,6 @@
 import Header from './Header'
 import Footer from './Footer'
 
-export default function MainLayout({ children }) {
-  return <><Header /><main>{children}</main><Footer /></>
+export default function MainLayout({ children, mainClassName = '' }) {
+  return <><Header /><main className={mainClassName}>{children}</main><Footer /></>
 }
