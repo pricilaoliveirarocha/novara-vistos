@@ -82,8 +82,7 @@ export default function Home() {
         gsap.from('.home-service-card', { y: 55, opacity: 0, stagger: .13, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: '.home-service-grid', start: 'top 84%' } })
       }
     }, root)
-    const footerReveal = reduced ? null : gsap.from('.home-page-main + .footer .cta-panel', { x: -45, opacity: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: '.home-page-main + .footer .contact-cta', start: 'top 76%' } })
-    return () => { ctx.revert(); footerReveal?.scrollTrigger?.kill(); footerReveal?.kill() }
+    return () => ctx.revert()
   }, [])
 
   useLayoutEffect(() => {
