@@ -1,9 +1,11 @@
-import { Quote, Star } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react'
 
 export const sampleReviews = [
   {
     name: 'Mariana Silva',
     context: 'Visto Americano',
+    flag: '🇺🇸',
     date: 'há 2 semanas',
     avatar: '/images/client.jpg',
     text: 'Atendimento impecável. Recebi orientação em cada etapa e consegui organizar meu processo com muita segurança.',
@@ -11,6 +13,7 @@ export const sampleReviews = [
   {
     name: 'Carlos Menezes',
     context: 'Visto Canadense',
+    flag: '🇨🇦',
     date: 'há 1 mês',
     avatar: '/images/client-2.jpg',
     text: 'Equipe muito atenciosa e transparente. Todas as minhas dúvidas foram respondidas com clareza e agilidade.',
@@ -18,6 +21,7 @@ export const sampleReviews = [
   {
     name: 'Renata Almeida',
     context: 'Renovação de passaporte',
+    flag: '🇬🇧',
     date: 'há 2 meses',
     avatar: '/images/client-3.jpg',
     text: 'O acompanhamento fez toda a diferença. O processo ficou simples, organizado e sem surpresas.',
@@ -25,6 +29,7 @@ export const sampleReviews = [
   {
     name: 'Eduardo Ramos',
     context: 'Viagem à Europa',
+    flag: '🇪🇺',
     date: 'há 3 meses',
     avatar: '/images/client-4.jpg',
     text: 'Profissionalismo do primeiro contato até a conclusão. Recomendo para quem quer viajar com tranquilidade.',
@@ -63,7 +68,9 @@ function ReviewCard({ review }) {
           <h3>{review.name}</h3>
           <p>{review.context}</p>
         </div>
-        <GoogleMark />
+        <span className="review-destination" aria-hidden="true">
+          {review.flag}
+        </span>
       </div>
 
       <div className="google-review-rating" aria-label="5 de 5 estrelas">
@@ -79,12 +86,14 @@ function ReviewCard({ review }) {
 }
 
 export default function Testimonials({ reviews = sampleReviews }) {
+  const [firstReview, setFirstReview] = useState(0)
+  const orderedReviews = reviews.map((_, index) => reviews[(firstReview + index) % reviews.length])
   return (
     <section id="depoimentos" className="home-testimonials" aria-labelledby="testimonials-title">
       <div className="container">
         <div className="home-testimonials-heading">
           <div>
-            <p className="eyebrow">Avaliações dos nossos clientes</p>
+            <p className="eyebrow">Depoimentos de quem vai mais longe</p>
             <h2 id="testimonials-title">
               Confiança que acompanha
               <br />
@@ -103,15 +112,34 @@ export default function Testimonials({ reviews = sampleReviews }) {
           </div>
         </div>
 
-        <div className="google-review-grid">
-          {reviews.map((review) => (
-            <ReviewCard key={review.name} review={review} />
-          ))}
-        </div>
+        <div className="home-reviews-carousel">
+          <button
+            className="review-arrow review-arrow-prev"
+            type="button"
+            aria-label="Depoimento anterior"
+            disabled={reviews.length < 2}
+            onClick={() => setFirstReview((index) => (index - 1 + reviews.length) % reviews.length)}
+          >
+            <ChevronLeft aria-hidden="true" />
+          </button>
+          <div className="google-review-grid">
+            {orderedReviews.map((review) => (
+              <ReviewCard key={review.name} review={review} />
+            ))}
+          </div>
 
+          <button
+            className="review-arrow review-arrow-next"
+            type="button"
+            aria-label="Próximo depoimento"
+            disabled={reviews.length < 2}
+            onClick={() => setFirstReview((index) => (index + 1) % reviews.length)}
+          >
+            <ChevronRight aria-hidden="true" />
+          </button>
+        </div>
         <p className="reviews-note">
-          <Quote aria-hidden="true" /> Estrutura preparada para integração futura com avaliações
-          verificadas do Google.
+          <Quote aria-hidden="true" /> Depoimentos ilustrativos.
         </p>
       </div>
     </section>

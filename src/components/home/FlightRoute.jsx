@@ -81,8 +81,8 @@ export default function FlightRoute() {
       const destinationBox = destination.getBoundingClientRect()
       const endX = destinationBox.left + destinationBox.width / 2
       const endY = destinationBox.top + window.scrollY + destinationBox.height / 2
-      const startX = Math.min(viewportWidth * 0.36, 520)
-      const startY = 74
+      const startX = viewportWidth * 0.5
+      const startY = document.querySelector('.home-hero').offsetHeight * 0.33
       const middleX = viewportWidth < 760 ? viewportWidth * 0.78 : viewportWidth * 0.53
 
       const routeData = [

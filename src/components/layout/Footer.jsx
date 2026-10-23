@@ -19,7 +19,7 @@ function ContactCallout({ isHomePage }) {
       <div className="container contact-cta-inner">
         <div className="cta-panel">
           <p className="eyebrow">
-            {isHomePage ? 'Planeje sua próxima viagem' : 'Pronto para o seu próximo destino?'}
+            {isHomePage ? 'O mundo tem a próxima história' : 'Pronto para o seu próximo destino?'}
           </p>
 
           <h2 id="footer-contact-title">
@@ -34,10 +34,7 @@ function ContactCallout({ isHomePage }) {
             )}
           </h2>
 
-          <p>
-            Tire suas dúvidas e receba uma orientação personalizada
-            <br className="desktop-break" /> para o seu caso.
-          </p>
+          <p>Fale com quem entende e comece hoje a sua jornada internacional.</p>
 
           <GoldButton href={site.whatsapp}>
             {isHomePage ? 'Fale com um especialista' : 'Atendimento pelo WhatsApp'}
@@ -80,9 +77,7 @@ export default function Footer() {
               </a>
             ))}
           </nav>
-          <p>
-            Seu mundo, <em>sem fronteiras.</em>
-          </p>
+          <p>Seu próximo destino, a nossa missão.</p>
         </div>
 
         <div className="footer-arrival">

@@ -1,6 +1,6 @@
-import { ArrowRight, CheckCircle2, PlaneTakeoff } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Play, UsersRound } from 'lucide-react'
 
-const highlights = ['Atendimento humano', 'Orientação especializada', 'Suporte do início ao fim']
+const highlights = ['Atendimento global', 'Experiência e confiança', 'Suporte em todas as etapas']
 
 export default function AboutPreview() {
   return (
@@ -14,9 +14,9 @@ export default function AboutPreview() {
             <em>conectamos histórias.</em>
           </h2>
           <p>
-            Somos uma assessoria consular especializada em vistos, passaportes e autorizações
-            internacionais. Traduzimos processos complexos em uma jornada clara, segura e
-            personalizada.
+            Acreditamos que cada destino representa uma nova oportunidade de vida. Por isso,
+            oferecemos soluções personalizadas e um atendimento próximo, do início ao fim do seu
+            processo.
           </p>
 
           <div className="home-about-points">
@@ -27,24 +27,31 @@ export default function AboutPreview() {
             ))}
           </div>
 
-          <a className="home-text-link" href="#depoimentos">
-            Veja o que dizem nossos clientes <ArrowRight aria-hidden="true" />
+          <a className="home-text-link" href="/sobre">
+            Conheça mais a Novara <ArrowRight aria-hidden="true" />
           </a>
         </div>
 
         <div className="home-about-visual">
           <img
-            src="/images/about-london.png"
-            alt="Viajante observando Londres enquanto planeja uma viagem internacional"
+            src="/images/service-europe.png"
+            alt="Big Ben e o Palácio de Westminster em Londres ao pôr do sol"
             loading="lazy"
           />
-          <div className="home-about-seal" aria-hidden="true">
-            <PlaneTakeoff />
-            <span>Novos destinos</span>
-          </div>
+          <a className="home-about-discover" href="/sobre">
+            <span>
+              <Play aria-hidden="true" />
+            </span>
+            <span>
+              CONHEÇA A NOVARA
+              <br />
+              NOSSA HISTÓRIA
+            </span>
+          </a>
           <div className="home-about-stat">
+            <UsersRound aria-hidden="true" />
             <strong>100%</strong>
-            <span>acompanhamento personalizado</span>
+            <span>comprometidos com o seu futuro</span>
           </div>
         </div>
       </div>

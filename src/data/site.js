@@ -18,12 +18,10 @@ export function getNavigation(pathname) {
 
   if (currentPath !== '/') return site.nav
 
-  return site.nav
-    .filter(({ label }) => label !== 'Serviços')
-    .map((item) => {
-      if (item.label === 'Sobre') return { ...item, href: '#sobre' }
-      return { ...item, href: item.href.replace('/#', '#') }
-    })
+  return site.nav.map((item) => {
+    if (item.label === 'Sobre') return { ...item, href: '#sobre' }
+    return { ...item, href: item.href.replace('/#', '#') }
+  })
 }
 
 export function isNavigationItemActive(href, pathname) {

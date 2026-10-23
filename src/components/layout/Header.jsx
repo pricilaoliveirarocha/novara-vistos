@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Brand from '../ui/Brand'
-import { getNavigation, isNavigationItemActive } from '../../data/site'
+import GoldButton from '../ui/GoldButton'
+import { getNavigation, isNavigationItemActive, site } from '../../data/site'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -29,7 +30,9 @@ export default function Header() {
           {renderNavigationItems()}
         </nav>
 
-        <span className="header-spacer" aria-hidden="true" />
+        <GoldButton className="header-contact" href={site.whatsapp}>
+          Fale com nosso time
+        </GoldButton>
         <button
           className="menu-toggle"
           type="button"

@@ -21,9 +21,9 @@ import { site } from '../data/site'
 gsap.registerPlugin(ScrollTrigger)
 
 const heroFeatures = [
-  { icon: ShieldCheck, title: 'Processo seguro', detail: 'e sem complicações' },
+  { icon: ShieldCheck, title: 'Processo seguro', detail: 'e descomplicado' },
   { icon: UsersRound, title: 'Atendimento', detail: 'personalizado' },
-  { icon: Globe2, title: 'Em todo', detail: 'o Brasil' },
+  { icon: Globe2, title: 'Mais de', detail: '50 países' },
 ]
 
 const services = [
@@ -32,28 +32,28 @@ const services = [
     description: 'Turismo, negócios, estudos e intercâmbio.',
     image: '/images/service-usa.png',
     icon: Landmark,
-    category: 'Estados Unidos',
+    category: 'Vistos para',
   },
   {
     title: 'Visto Canadense',
     description: 'Turismo, estudos, trabalho e residência.',
     image: '/images/service-canada.png',
     icon: Sparkles,
-    category: 'Canadá',
+    category: 'Vistos para',
   },
   {
     title: 'Visto para Europa',
     description: 'Turismo, estudos e negócios.',
     image: '/images/service-europe.png',
     icon: Globe2,
-    category: 'Europa',
+    category: 'Vistos para',
   },
   {
-    title: 'Passaportes',
-    description: 'Emissão e renovação com orientação documental.',
-    image: '/images/passport.jpg',
+    title: 'Personalizada',
+    description: 'Planejamento completo para o seu destino.',
+    image: '/images/airport-front.png',
     icon: FileCheck2,
-    category: 'Documentação',
+    category: 'Consultoria',
   },
 ]
 
@@ -65,12 +65,12 @@ const advisorySteps = [
   },
   {
     icon: BadgeCheck,
-    title: 'Estratégia consular',
+    title: 'Estratégia personalizada',
     copy: 'Orientamos o melhor caminho para o seu objetivo de viagem.',
   },
   {
     icon: PlaneTakeoff,
-    title: 'Preparação para viajar',
+    title: 'Acompanhamento em tempo real',
     copy: 'Você recebe suporte até a conclusão do processo.',
   },
 ]
@@ -83,13 +83,14 @@ function Hero() {
 
       <div className="container home-hero-inner">
         <div className="home-hero-copy">
-          <p className="eyebrow">Assessoria de vistos consulares</p>
+          <p className="eyebrow">Liberdade de ir mais longe</p>
           <h1>
             <span>Seu mundo,</span>
             <em>sem fronteiras.</em>
           </h1>
           <p className="home-hero-description">
-            Cuidamos de todo o processo para você conquistar seus vistos e viajar com tranquilidade.
+            Soluções de vistos e imigração para você conquistar o que o mundo tem de melhor, com
+            segurança, experiência e atendimento personalizado.
           </p>
 
           <GoldButton className="home-hero-button" href={site.whatsapp}>
@@ -148,23 +149,27 @@ function Advisory() {
       <div className="container home-advisory-grid">
         <div className="home-advisory-image">
           <img
-            src="/images/passport.jpg"
-            alt="Passaporte e documentos preparados para uma viagem internacional"
+            src="/images/airport-front.png"
+            alt="Avião no aeroporto ao pôr do sol"
             loading="lazy"
           />
-          <span>Documentação revisada com atenção aos detalhes</span>
+          <span>
+            <FileCheck2 aria-hidden="true" />
+            Planejamento completo para
+            <br /> sua viagem ao mundo.
+          </span>
         </div>
 
         <div className="home-advisory-copy">
-          <p className="eyebrow">Assessoria completa</p>
+          <p className="eyebrow">Assistência completa</p>
           <h2 id="advisory-title">
             Sua viagem começa
             <br />
             <em>antes do embarque.</em>
           </h2>
           <p className="home-advisory-intro">
-            Transformamos exigências consulares em um processo claro, organizado e acompanhado por
-            especialistas.
+            Do planejamento à emissão do visto, cuidamos de cada detalhe para uma experiência
+            tranquila e sem imprevistos.
           </p>
 
           <div className="home-advisory-steps">
@@ -203,8 +208,8 @@ function Services() {
 
           <div className="home-services-intro">
             <p>
-              Assessoria especializada para turismo, estudos, negócios e muito mais, com suporte em
-              todas as etapas do processo.
+              Soluções completas para quem estuda, trabalha, faz negócios ou reúne sua família em
+              qualquer destino do mundo.
             </p>
             <a href={site.whatsapp}>
               Ver todos os serviços <ArrowRight aria-hidden="true" />
