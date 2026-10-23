@@ -12,7 +12,9 @@ import {
   Sparkles,
   UsersRound,
 } from 'lucide-react'
+import AboutPreview from '../components/home/AboutPreview'
 import FlightRoute from '../components/home/FlightRoute'
+import Testimonials from '../components/home/Testimonials'
 import GoldButton from '../components/ui/GoldButton'
 import { site } from '../data/site'
 
@@ -287,6 +289,43 @@ function useHomeAnimations(rootRef) {
           start: 'top 80%',
         },
       })
+
+      gsap.from('.home-about-copy > *, .home-about-visual', {
+        y: 42,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.75,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.home-about',
+          start: 'top 78%',
+        },
+      })
+
+      gsap.from('.google-review-card', {
+        y: 48,
+        opacity: 0,
+        rotateX: 6,
+        stagger: 0.12,
+        duration: 0.75,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.google-review-grid',
+          start: 'top 84%',
+        },
+      })
+
+      gsap.from('.google-review-rating svg', {
+        scale: 0,
+        rotate: -30,
+        stagger: 0.025,
+        duration: 0.35,
+        ease: 'back.out(2)',
+        scrollTrigger: {
+          trigger: '.google-review-grid',
+          start: 'top 82%',
+        },
+      })
     }, rootRef)
 
     return () => context.revert()
@@ -302,7 +341,9 @@ export default function Home() {
       <div ref={rootRef} className="home-page">
         <Hero />
         <Services />
+        <AboutPreview />
         <Advisory />
+        <Testimonials />
       </div>
       <FlightRoute />
     </>

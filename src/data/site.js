@@ -16,7 +16,14 @@ export function normalizePath(pathname) {
 export function getNavigation(pathname) {
   const currentPath = normalizePath(pathname)
 
-  return currentPath === '/' ? site.nav.filter(({ label }) => label !== 'Serviços') : site.nav
+  if (currentPath !== '/') return site.nav
+
+  return site.nav
+    .filter(({ label }) => label !== 'Serviços')
+    .map((item) => {
+      if (item.label === 'Sobre') return { ...item, href: '#sobre' }
+      return { ...item, href: item.href.replace('/#', '#') }
+    })
 }
 
 export function isNavigationItemActive(href, pathname) {

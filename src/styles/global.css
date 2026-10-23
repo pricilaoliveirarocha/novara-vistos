@@ -783,6 +783,143 @@ h2 {
   stroke-width: 1.8;
 }
 
+.home-about {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0;
+  color: #fff;
+  background: radial-gradient(circle at 85% 20%, rgba(29, 74, 103, 0.46), transparent 36%), #031a2b;
+}
+.home-about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background: url('/images/footer-world-map.png') left center / 58% auto no-repeat;
+  pointer-events: none;
+}
+.home-about-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(60px, 9vw, 130px);
+  align-items: center;
+}
+.home-about-copy h2 {
+  margin-bottom: 24px;
+  color: #fff;
+  font:
+    400 clamp(50px, 5vw, 69px) / 0.94 'Cormorant Garamond',
+    Georgia,
+    serif;
+}
+.home-about-copy h2 em {
+  color: #efa94f;
+  font-weight: 400;
+}
+.home-about-copy > p:not(.eyebrow) {
+  max-width: 530px;
+  margin-bottom: 26px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.65;
+}
+.home-about-points {
+  display: grid;
+  gap: 11px;
+  margin-bottom: 30px;
+}
+.home-about-points span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13px;
+}
+.home-about-points svg {
+  width: 17px;
+  color: #dfaa51;
+  stroke-width: 1.7;
+}
+.home-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 5px;
+  color: #edb75b;
+  border-bottom: 1px solid rgba(237, 183, 91, 0.55);
+  font-size: 13px;
+}
+.home-text-link svg {
+  width: 16px;
+  transition: transform 0.25s ease;
+}
+.home-text-link:hover svg {
+  transform: translateX(4px);
+}
+.home-about-visual {
+  position: relative;
+  min-height: 475px;
+}
+.home-about-visual > img {
+  width: 100%;
+  height: 475px;
+  object-fit: cover;
+  border: 1px solid rgba(237, 183, 91, 0.42);
+  border-radius: 110px 4px 4px 4px;
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.32);
+}
+.home-about-seal {
+  position: absolute;
+  top: -31px;
+  right: -28px;
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  color: #e7b65e;
+  border: 1px solid rgba(231, 182, 94, 0.72);
+  border-radius: 50%;
+  background: rgba(3, 26, 43, 0.88);
+  box-shadow:
+    inset 0 0 0 7px rgba(3, 26, 43, 0.9),
+    inset 0 0 0 8px rgba(231, 182, 94, 0.36);
+}
+.home-about-seal svg {
+  width: 31px;
+}
+.home-about-seal span {
+  position: absolute;
+  bottom: 17px;
+  font-size: 7px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.home-about-stat {
+  position: absolute;
+  right: -22px;
+  bottom: -25px;
+  width: 210px;
+  padding: 20px 23px;
+  display: grid;
+  border-left: 3px solid #e5ab4b;
+  background: #f7f2e9;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+}
+.home-about-stat strong {
+  color: #0a2438;
+  font:
+    38px/1 'Cormorant Garamond',
+    Georgia,
+    serif;
+}
+.home-about-stat span {
+  margin-top: 4px;
+  color: #687078;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
 .home-advisory {
   position: relative;
   padding: 86px 0;
@@ -905,6 +1042,171 @@ h2 {
   color: #697176;
   font-size: 13px;
   line-height: 1.45;
+}
+
+.home-testimonials {
+  position: relative;
+  overflow: hidden;
+  padding: 88px 0 76px;
+  color: #fff;
+  background: radial-gradient(circle at 20% 0, rgba(16, 58, 86, 0.72), transparent 37%), #031827;
+}
+.home-testimonials::after {
+  content: '★★★★★';
+  position: absolute;
+  right: -25px;
+  bottom: -15px;
+  color: transparent;
+  font-size: 120px;
+  letter-spacing: 0.08em;
+  -webkit-text-stroke: 1px rgba(224, 169, 75, 0.07);
+  pointer-events: none;
+}
+.home-testimonials-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 38px;
+}
+.home-testimonials-heading h2 {
+  margin: 0;
+  color: #fff;
+  font:
+    400 clamp(48px, 4.7vw, 66px) / 0.94 'Cormorant Garamond',
+    Georgia,
+    serif;
+}
+.home-testimonials-heading h2 em {
+  color: #efa94f;
+  font-weight: 400;
+}
+.google-rating-summary {
+  min-width: 205px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  backdrop-filter: blur(8px);
+}
+.google-rating-summary > svg {
+  width: 32px;
+  height: 32px;
+}
+.google-rating-summary div {
+  display: grid;
+  gap: 3px;
+}
+.google-rating-summary strong {
+  font-size: 13px;
+  font-weight: 500;
+}
+.google-rating-summary span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+}
+.google-rating-summary span svg {
+  width: 14px;
+  fill: #fbbc04;
+  color: #fbbc04;
+}
+.google-review-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  perspective: 1000px;
+}
+.google-review-card {
+  min-height: 260px;
+  padding: 22px;
+  border: 1px solid rgba(218, 172, 91, 0.18);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.035));
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+  transform-origin: center bottom;
+}
+.google-review-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(231, 177, 84, 0.5);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05));
+}
+.google-review-head {
+  display: grid;
+  grid-template-columns: 44px 1fr 22px;
+  gap: 12px;
+  align-items: center;
+}
+.google-review-head > img {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border: 1px solid rgba(235, 184, 95, 0.65);
+  border-radius: 50%;
+}
+.google-review-head h3 {
+  margin: 0 0 3px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+.google-review-head p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 10px;
+}
+.google-review-head > svg {
+  width: 21px;
+  height: 21px;
+}
+.google-review-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 18px 0 15px;
+}
+.google-review-rating svg {
+  width: 14px;
+  height: 14px;
+  fill: #fbbc04;
+  color: #fbbc04;
+}
+.google-review-rating span {
+  margin-left: 7px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 9px;
+}
+.google-review-text {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font:
+    17px/1.48 'Cormorant Garamond',
+    Georgia,
+    serif;
+}
+.reviews-note {
+  position: relative;
+  z-index: 1;
+  margin: 25px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+}
+.reviews-note svg {
+  width: 13px;
 }
 
 .home-flight-layer {
@@ -1144,6 +1446,17 @@ h2 {
   .home-service-image {
     height: 270px;
   }
+  .home-about-grid {
+    gap: 58px;
+  }
+  .home-about-visual,
+  .home-about-visual > img {
+    min-height: 430px;
+    height: 430px;
+  }
+  .google-review-grid {
+    grid-template-columns: 1fr 1fr;
+  }
   .home-advisory-grid {
     grid-template-columns: 0.9fr 1.1fr;
     gap: 48px;
@@ -1199,6 +1512,18 @@ h2 {
   }
   .home-services-intro a {
     margin-left: 0;
+  }
+  .home-about-grid {
+    grid-template-columns: 1fr;
+  }
+  .home-about-copy {
+    max-width: 640px;
+  }
+  .home-about-visual {
+    width: min(100%, 640px);
+  }
+  .home-testimonials-heading {
+    align-items: start;
   }
   .home-advisory-grid {
     grid-template-columns: 1fr;
@@ -1268,6 +1593,34 @@ h2 {
   .home-service-image {
     height: 255px;
   }
+  .home-about {
+    padding: 64px 0 78px;
+  }
+  .home-about-grid {
+    gap: 48px;
+  }
+  .home-about-copy h2 {
+    font-size: 47px;
+  }
+  .home-about-visual,
+  .home-about-visual > img {
+    min-height: 350px;
+    height: 350px;
+  }
+  .home-about-visual > img {
+    border-radius: 64px 3px 3px 3px;
+  }
+  .home-about-seal {
+    top: -25px;
+    right: -7px;
+    width: 80px;
+    height: 80px;
+  }
+  .home-about-stat {
+    right: -5px;
+    bottom: -30px;
+    width: 190px;
+  }
   .home-advisory {
     padding: 58px 0;
   }
@@ -1290,6 +1643,29 @@ h2 {
   }
   .home-advisory-steps h3 {
     font-size: 21px;
+  }
+  .home-testimonials {
+    padding: 62px 0 55px;
+  }
+  .home-testimonials-heading {
+    display: grid;
+    gap: 27px;
+  }
+  .home-testimonials-heading h2 {
+    font-size: 45px;
+  }
+  .google-rating-summary {
+    width: fit-content;
+  }
+  .google-review-grid {
+    grid-template-columns: 1fr;
+  }
+  .google-review-card {
+    min-height: 0;
+  }
+  .reviews-note {
+    justify-content: flex-start;
+    line-height: 1.45;
   }
   .home-page-main + .footer .contact-cta,
   .home-page-main + .footer .contact-cta-inner {
