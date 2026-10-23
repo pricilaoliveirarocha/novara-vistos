@@ -7,8 +7,21 @@ export const site = {
     { label: 'Depoimentos', href: '/#depoimentos' },
     { label: 'Contato', href: '/#contato' },
   ],
-  plans: [
-    { country: 'Visto Americano', flag: '🇺🇸', price: 'R$ 1.490', image: '/images/new-york.jpg' },
-    { country: 'Visto Canadense', flag: '🇨🇦', price: 'R$ 1.690', image: '/images/canada.jpg' },
-  ],
+}
+
+export function normalizePath(pathname) {
+  return pathname.replace(/\/$/, '') || '/'
+}
+
+export function getNavigation(pathname) {
+  const currentPath = normalizePath(pathname)
+
+  return currentPath === '/' ? site.nav.filter(({ label }) => label !== 'Serviços') : site.nav
+}
+
+export function isNavigationItemActive(href, pathname) {
+  const currentPath = normalizePath(pathname)
+
+  if (href === '/sobre') return currentPath === '/sobre'
+  return href === '/' && currentPath === '/'
 }
