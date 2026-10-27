@@ -9,7 +9,7 @@ const close = () => { open.value = false }
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#inicio" aria-label="Novara Vistos — início">
-        <span class="brand-mark" aria-hidden="true">N</span>
+        <img class="brand-logo" src="/images/logo-novara.webp" width="54" height="48" alt="" aria-hidden="true">
         <span><b>NOVARA</b><small>VISTOS</small></span>
       </a>
       <button class="menu-toggle" type="button" :aria-expanded="open" aria-controls="main-nav" @click="open = !open">
