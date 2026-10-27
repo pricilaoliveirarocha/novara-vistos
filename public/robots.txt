@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://novaravistos.com.br/sitemap.xml
