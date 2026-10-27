@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://novaravistos.com.br/sitemap.xml
+Sitemap: https://novara-vistos.pricilaoliveiras21.chatgpt.site/sitemap.xml

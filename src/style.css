@@ -34,6 +34,8 @@ h2 { margin-bottom: 14px; font-size: clamp(2.5rem, 4.1vw, 4.25rem); }
 .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
 .btn-gold { color: #082137; background: linear-gradient(135deg, #f3ce80, #d49a3f); box-shadow: 0 10px 28px rgba(211, 158, 68, .25); }
 .btn-gold:hover { box-shadow: 0 14px 34px rgba(211, 158, 68, .38); }
+.contact-pending { cursor: default; opacity: .85; }
+.contact-pending:hover { transform: none; box-shadow: 0 10px 28px rgba(211, 158, 68, .25); }
 .btn-outline { min-height: 42px; padding-inline: 20px; color: #f7de9d; border-color: rgba(239, 197, 110, .7); }
 
 .site-header { position: absolute; z-index: 20; top: 0; width: 100%; color: white; }
