@@ -19,10 +19,10 @@ const close = () => { open.value = false }
         <a href="#inicio" @click="close">Início</a>
         <a href="#sobre" @click="close">Sobre</a>
         <a href="#servicos" @click="close">Serviços</a>
-        <a href="#diferenciais" @click="close">Diferenciais</a>
+        <a href="#depoimentos" @click="close">Depoimentos</a>
         <a href="#contato" @click="close">Contato</a>
       </nav>
-      <a class="btn btn-outline header-cta" href="https://wa.me/5521982256381?text=Olá%2C%20quero%20falar%20com%20um%20especialista%20em%20vistos." target="_blank" rel="noopener">Fale com um especialista</a>
+      <a class="btn btn-outline header-cta" href="https://wa.me/5521982256381?text=Olá%2C%20quero%20falar%20com%20um%20especialista%20em%20vistos." target="_blank" rel="noopener">◉&nbsp; Fale com especialista</a>
     </div>
   </header>
 </template>

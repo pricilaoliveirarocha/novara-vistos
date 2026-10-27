@@ -21,5 +21,10 @@ await Promise.all([
   sharp('src/assets-src/logo-oficial.png')
     .resize({ width: 64, height: 64, fit: 'contain' })
     .png({ compressionLevel: 9 })
-    .toFile('public/favicon.png')
+    .toFile('public/favicon.png'),
+  sharp('src/assets-src/novara-home-reference.jpeg')
+    .extract({ left: 320, top: 949, width: 46, height: 46 })
+    .resize({ width: 116, height: 116, fit: 'cover' })
+    .webp({ quality: 88 })
+    .toFile('public/images/depoimento-marina.webp')
 ])
