@@ -1,16 +1,10 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { ArrowLeft, ArrowRight, Star } from 'lucide-vue-next'
+import ClientAvatar from './ClientAvatar.vue'
+import { featuredTestimonials } from '../testimonials'
 
-// Para adicionar depoimentos, inclua novos itens: as setas aparecem a partir do segundo.
-const testimonials = [
-  {
-    quote: 'Atendimento impecável, esclareceram todas as minhas dúvidas e me acompanharam em cada etapa. Consegui meu visto sem complicações!',
-    name: 'Mariana Silva',
-    detail: 'Visto Americano – Turismo',
-    photo: '/images/depoimento-mariana.webp'
-  }
-]
+const testimonials = featuredTestimonials
 
 const index = ref(0)
 const current = computed(() => testimonials[index.value])
@@ -42,10 +36,10 @@ const move = (step) => { index.value = (index.value + step + testimonials.length
             <span class="quote-mark" aria-hidden="true">“</span>
             <blockquote>“{{ current.quote }}”</blockquote>
             <figcaption>
-              <img :src="current.photo" width="64" height="64" alt="" loading="lazy">
+              <ClientAvatar :name="current.name" :photo="current.photo" />
               <span>
                 <strong>{{ current.name }}</strong>
-                <small>{{ current.detail }}</small>
+                <small>{{ current.visa }}</small>
                 <span class="stars" role="img" aria-label="Avaliação: 5 estrelas">
                   <Star v-for="n in 5" :key="n" :size="15" fill="currentColor" stroke="none" aria-hidden="true" />
                 </span>

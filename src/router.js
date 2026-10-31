@@ -21,7 +21,7 @@ const router = createRouter({
   scrollBehavior(to, from) {
     const target = to.hash
       // top soma a altura do menu e o deslocamento (34px) das animações de entrada.
-      ? { el: to.hash, top: 130, behavior: prefersReducedMotion() ? 'auto' : 'smooth' }
+      ? { el: to.hash, top: 130, behavior: to.path !== from.path || prefersReducedMotion() ? 'auto' : 'smooth' }
       : { top: 0 }
     if (to.path === from.path) return target
     return new Promise((resolve) => setTimeout(() => resolve(target), PAGE_FADE_MS + 40))

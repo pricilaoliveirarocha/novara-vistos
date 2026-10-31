@@ -1,5 +1,5 @@
 <script setup>
-import { ArrowRight, FileCheck2, Globe2, ShieldCheck, UsersRound } from 'lucide-vue-next'
+import { ArrowRight, FileCheck2, Globe2, Route, ShieldCheck } from 'lucide-vue-next'
 import WhatsAppIcon from './WhatsAppIcon.vue'
 import { whatsapp } from '../site'
 
@@ -7,7 +7,7 @@ const benefits = [
   { icon: ShieldCheck, text: ['Atendimento', 'especializado'] },
   { icon: Globe2, text: ['Suporte em todo', 'o Brasil'] },
   { icon: FileCheck2, text: ['Processo seguro', 'e sem complicações'] },
-  { icon: UsersRound, text: ['Mais de 1.000', 'clientes atendidos'] }
+  { icon: Route, text: ['Acompanhamento', 'até o resultado'] }
 ]
 </script>
 
@@ -24,11 +24,6 @@ const benefits = [
 
     <div class="hero-main">
       <div class="hero-visual">
-        <svg width="0" height="0" aria-hidden="true" class="clip-def">
-          <clipPath id="hero-wave" clipPathUnits="objectBoundingBox">
-            <path d="M.09.2C.27.03.5.22.72.13.84.08.93.05 1 0V1H.02C.13.74-.02.45.09.2Z" />
-          </clipPath>
-        </svg>
         <div class="hero-photo">
           <picture>
             <img
@@ -62,10 +57,6 @@ const benefits = [
         <a class="btn btn-gold hero-in" style="--d: .5s" :href="whatsapp('Olá, quero iniciar minha solicitação de assessoria.')" target="_blank" rel="noopener">
           <WhatsAppIcon /> Fale com um especialista <ArrowRight class="btn-arrow" :size="18" aria-hidden="true" />
         </a>
-        <div class="social-proof hero-in" style="--d: .65s">
-          <img src="/images/clientes.webp" width="264" height="108" alt="">
-          <p><strong>+ de 1.000 clientes atendidos</strong><br>em todo o Brasil</p>
-        </div>
       </div>
     </div>
 

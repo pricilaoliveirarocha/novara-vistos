@@ -1,4 +1,5 @@
 import sharp from 'sharp'
+import { existsSync } from 'node:fs'
 import { mkdir } from 'node:fs/promises'
 
 const src = (name) => `src/assets-src/${name}`
@@ -35,10 +36,37 @@ await Promise.all(panels.map(([name, from, to]) => {
     .toFile(out(`${name}.webp`))
 }))
 
+// Viajante à direita, como no layout da página de depoimentos.
+await sharp(src('aeroporto-cta.png'))
+  .extract({ left: 0, top: 0, width: 1037, height: 758 })
+  .flop()
+  .resize({ width: 1400, kernel: 'lanczos3' })
+  .webp({ quality: 80 })
+  .toFile(out('depoimentos-topo.webp'))
+
+// Recortes da referência da tela Sobre: substituir por fotos originais quando houver.
+const about = [
+  ['sobre-topo', { left: 0, top: 86, width: 1006, height: 252 }],
+  ['sobre-londres', { left: 582, top: 380, width: 323, height: 255 }],
+  ['mapa-rota', { left: 470, top: 1248, width: 536, height: 184 }]
+]
+
+await Promise.all(about.map(([name, area]) =>
+  sharp(src('novara-sobre-reference.jpg'))
+    .extract(area)
+    .resize({ width: area.width * 2, kernel: 'lanczos3' })
+    .webp({ quality: 84 })
+    .toFile(out(`${name}.webp`))
+))
+
+// Fotos reais da equipe: src/assets-src/equipe-wander.jpg e equipe-pricila.jpg
+await Promise.all(['equipe-wander', 'equipe-pricila']
+  .filter((name) => existsSync(src(`${name}.jpg`)))
+  .map((name) => sharp(src(`${name}.jpg`)).resize({ width: 640, withoutEnlargement: true }).webp({ quality: 84 }).toFile(out(`${name}.webp`))))
+
 await Promise.all([
   sharp(src('logo-oficial.png')).resize({ width: 240 }).webp({ quality: 90, alphaQuality: 100 }).toFile(out('logo-novara.webp')),
   sharp(src('logo-oficial.png')).resize({ width: 64, height: 64, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } }).png({ compressionLevel: 9 }).toFile('public/favicon.png'),
-  // Rostos recortados da referência visual: substituir por fotos reais de clientes.
-  sharp(src('novara-home-reference.jpeg')).extract({ left: 52, top: 272, width: 66, height: 27 }).resize({ width: 264, kernel: 'lanczos3' }).webp({ quality: 88 }).toFile(out('clientes.webp')),
+  // Rosto recortado da referência visual: substituir pela foto real do cliente.
   sharp(src('novara-home-reference.jpeg')).extract({ left: 329, top: 952, width: 40, height: 40 }).resize({ width: 160, kernel: 'lanczos3' }).webp({ quality: 88 }).toFile(out('depoimento-mariana.webp'))
 ])
