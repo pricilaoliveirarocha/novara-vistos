@@ -14,14 +14,14 @@ const reasons = [
   <section class="section container split">
     <div class="split-photo" data-reveal>
       <img
-        src="/images/hero-passaporte.webp"
-        srcset="/images/hero-passaporte-mobile.webp 900w, /images/hero-passaporte.webp 1920w"
-        sizes="(max-width: 820px) 100vw, 600px"
-        :style="{ objectPosition: '80% 50%' }"
+        src="/images/aeroporto-cta.webp"
+        srcset="/images/aeroporto-cta-mobile.webp 900w, /images/aeroporto-cta.webp 1920w"
+        sizes="(max-width: 820px) 100vw, 1200px"
+        :style="{ objectPosition: '16% 50%' }"
         width="1920"
-        height="1200"
+        height="702"
         loading="lazy"
-        alt="Mão segurando passaporte brasileiro com cartões de embarque, com o Parlamento de Londres ao pôr do sol"
+        alt="Viajante com mala aguardando o voo em um aeroporto ao pôr do sol"
       >
     </div>
     <div data-reveal style="--d: .1s">

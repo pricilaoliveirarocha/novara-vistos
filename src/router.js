@@ -6,7 +6,7 @@ const PAGE_FADE_MS = 260
 const routes = [
   { path: '/', component: HomePage, meta: { title: 'Novara Vistos | Assessoria de Vistos e Passaportes', description: 'Assessoria especializada em vistos internacionais, passaportes e documentação consular. Orientação personalizada do primeiro contato ao resultado final.' } },
   { path: '/sobre', component: () => import('./pages/AboutPage.vue'), meta: { title: 'Sobre | Novara Vistos', description: 'Conheça a Novara Vistos, assessoria que acompanha você em cada etapa do seu visto ou passaporte, com atendimento personalizado em todo o Brasil.' } },
-  { path: '/servicos', component: () => import('./pages/ServicesPage.vue'), meta: { title: 'Serviços e Planos | Novara Vistos', description: 'Assessoria para visto americano, visto canadense, visto de estudante e passaportes. Veja o que está incluído e os planos.' } },
+  { path: '/servicos', component: () => import('./pages/ServicesPage.vue'), meta: { title: 'Serviços e Valores | Novara Vistos', description: 'Assessoria para vistos dos EUA, Canadá, Austrália e outros destinos, autorizações eletrônicas e passaporte. Confira serviços e valores.' } },
   { path: '/depoimentos', component: () => import('./pages/TestimonialsPage.vue'), meta: { title: 'Depoimentos | Novara Vistos', description: 'Histórias de clientes que contaram com a assessoria da Novara Vistos.' } },
   { path: '/contato', component: () => import('./pages/ContactPage.vue'), meta: { title: 'Contato | Novara Vistos', description: 'Fale com um especialista da Novara Vistos pelo WhatsApp ou por e-mail e receba uma orientação personalizada.' } },
   { path: '/:pathMatch(.*)*', redirect: '/' }

@@ -1,26 +1,26 @@
 <script setup>
-import { FileText, FolderOpen, MessagesSquare, Plane } from 'lucide-vue-next'
-
 const steps = [
-  { icon: MessagesSquare, title: 'Fale conosco', text: 'Tire suas dúvidas com um especialista.' },
-  { icon: FileText, title: 'Análise do caso', text: 'Avaliamos o seu perfil e orientamos o melhor caminho.' },
-  { icon: FolderOpen, title: 'Documentação', text: 'Cuidamos de toda a preparação com atenção e segurança.' },
-  { icon: Plane, title: 'Visto em mãos', text: 'Acompanhamos até o resultado final.' }
+  { title: 'Fale conosco', text: 'Tire suas dúvidas com um especialista.' },
+  { title: 'Análise do caso', text: 'Avaliamos o seu perfil e orientamos o melhor caminho.' },
+  { title: 'Documentação', text: 'Cuidamos de toda a preparação com atenção e segurança.' },
+  { title: 'Visto em mãos', text: 'Acompanhamos até o resultado final.' }
 ]
 </script>
 
 <template>
-  <section class="section container">
-    <div class="section-head" data-reveal>
-      <h2>Como funciona</h2>
+  <section class="journey">
+    <div class="container">
+      <div class="journey-head" data-reveal>
+        <p class="eyebrow">Como funciona</p>
+        <h2 class="title-large">Sua jornada começa aqui.</h2>
+      </div>
+      <ol class="step-grid">
+        <li v-for="(step, index) in steps" :key="step.title" class="step" data-reveal :style="{ '--d': `${index * 0.1}s` }">
+          <span class="step-number">{{ String(index + 1).padStart(2, '0') }}</span>
+          <h3>{{ step.title }}</h3>
+          <p>{{ step.text }}</p>
+        </li>
+      </ol>
     </div>
-    <ol class="step-grid">
-      <li v-for="(step, index) in steps" :key="step.title" class="card step" data-reveal :style="{ '--d': `${index * 0.07}s` }">
-        <span class="step-number">{{ index + 1 }}</span>
-        <component :is="step.icon" :size="22" :stroke-width="1.5" aria-hidden="true" />
-        <h3>{{ step.title }}</h3>
-        <p>{{ step.text }}</p>
-      </li>
-    </ol>
   </section>
 </template>

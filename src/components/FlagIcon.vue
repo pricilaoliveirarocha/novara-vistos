@@ -47,6 +47,26 @@ const clipId = useId()
         <rect x="11" width="10" height="32" fill="#fff" />
         <rect x="21" width="11" height="32" fill="#ce2b37" />
       </template>
+      <template v-else-if="country === 'mx'">
+        <rect width="11" height="32" fill="#006847" />
+        <rect x="11" width="10" height="32" fill="#fff" />
+        <rect x="21" width="11" height="32" fill="#ce1126" />
+        <circle cx="16" cy="16" r="2.6" fill="#8c6a2f" />
+      </template>
+      <template v-else-if="country === 'nz'">
+        <rect width="32" height="32" fill="#1b2f63" />
+        <path stroke="#fff" stroke-width="2.5" d="m0 0 15 15M15 0 0 15" />
+        <path stroke="#fff" stroke-width="4" d="M7.5 0v15M0 7.5h15" />
+        <path stroke="#c8102e" stroke-width="2" d="M7.5 0v15M0 7.5h15" />
+        <g fill="#c8102e" stroke="#fff" stroke-width=".6">
+          <circle cx="23" cy="8" r="1.5" /><circle cx="27" cy="14" r="1.5" /><circle cx="19" cy="15" r="1.5" /><circle cx="23" cy="24" r="1.5" />
+        </g>
+      </template>
+      <template v-else-if="country === 'br'">
+        <rect width="32" height="32" fill="#009c3b" />
+        <path fill="#ffdf00" d="M16 6 29 16 16 26 3 16Z" />
+        <circle cx="16" cy="16" r="5.4" fill="#002776" />
+      </template>
       <template v-else-if="country === 'pt'">
         <rect width="13" height="32" fill="#046a38" />
         <rect x="13" width="19" height="32" fill="#da291c" />
