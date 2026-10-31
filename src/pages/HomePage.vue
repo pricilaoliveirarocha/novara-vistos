@@ -1,19 +1,15 @@
 <script setup>
 import HeroSection from '../components/HeroSection.vue'
-import JourneySection from '../components/JourneySection.vue'
 import ServicesSection from '../components/ServicesSection.vue'
-import TestimonialSection from '../components/TestimonialSection.vue'
+import JourneySection from '../components/JourneySection.vue'
 import TrustSection from '../components/TrustSection.vue'
-import PlansSection from '../components/PlansSection.vue'
-import CtaSection from '../components/CtaSection.vue'
+import TestimonialSection from '../components/TestimonialSection.vue'
 </script>
 
 <template>
   <HeroSection />
-  <JourneySection />
   <ServicesSection />
-  <TestimonialSection />
+  <JourneySection />
   <TrustSection />
-  <PlansSection />
-  <CtaSection />
+  <TestimonialSection />
 </template>

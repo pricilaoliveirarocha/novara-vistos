@@ -10,6 +10,6 @@ const initials = computed(() => props.name.split(' ').map((part) => part[0]).sli
 </script>
 
 <template>
-  <img v-if="photo" class="client-avatar" :src="photo" width="64" height="64" alt="" loading="lazy">
-  <span v-else class="client-avatar client-initials" aria-hidden="true">{{ initials }}</span>
+  <img v-if="photo" class="client-avatar" :src="photo" width="42" height="42" alt="" loading="lazy">
+  <span v-else class="client-avatar" aria-hidden="true">{{ initials }}</span>
 </template>

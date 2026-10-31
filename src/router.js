@@ -20,8 +20,8 @@ const router = createRouter({
   // Espera a página anterior sair para o salto de rolagem não aparecer na transição.
   scrollBehavior(to, from) {
     const target = to.hash
-      // top soma a altura do menu e o deslocamento (34px) das animações de entrada.
-      ? { el: to.hash, top: 130, behavior: to.path !== from.path || prefersReducedMotion() ? 'auto' : 'smooth' }
+      // top soma a altura do menu e o deslocamento (26px) das animações de entrada.
+      ? { el: to.hash, top: 112, behavior: to.path !== from.path || prefersReducedMotion() ? 'auto' : 'smooth' }
       : { top: 0 }
     if (to.path === from.path) return target
     return new Promise((resolve) => setTimeout(() => resolve(target), PAGE_FADE_MS + 40))

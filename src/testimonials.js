@@ -8,7 +8,7 @@ export const testimonials = [
   { quote: 'Desde o primeiro contato, fui muito bem atendido. Tiraram todas as minhas dúvidas e me passaram muita segurança. Meu visto saiu conforme o planejado.', name: 'Rafael S.', rating: 5, visa: 'Visto Australiano', country: 'au' },
   { quote: 'Serviço impecável! Explicam tudo de forma clara e acompanham cada etapa. Me senti segura e bem orientada durante todo o processo.', name: 'Bianca T.', rating: 5, visa: 'Visto Italiano', country: 'it' },
   { quote: 'Atendimento personalizado e muito profissional. Consegui meu visto sem complicações e dentro do prazo. Super recomendo a Novara Vistos!', name: 'Fernando L.', rating: 5, visa: 'Visto para Portugal', country: 'pt' },
-  { quote: 'Atendimento impecável, esclareceram todas as minhas dúvidas e me acompanharam em cada etapa. Consegui meu visto sem complicações!', name: 'Mariana Silva', rating: 5, visa: 'Visto Americano', country: 'us', photo: '/images/depoimento-mariana.webp' },
+  { quote: 'Atendimento impecável, esclareceram todas as minhas dúvidas e me acompanharam em cada etapa. Consegui meu visto sem complicações!', name: 'Mariana Silva', rating: 5, visa: 'Visto Americano', country: 'us' },
   { quote: 'Eu não sabia nem por onde começar. Organizaram toda a documentação e me explicaram cada passo com paciência.', name: 'Patrícia N.', rating: 5, visa: 'Visto Canadense', country: 'ca' },
   { quote: 'Renovei meu passaporte com a ajuda da equipe e não precisei me preocupar com nada. Muito prático.', name: 'André C.', rating: 5, visa: 'Passaporte' },
   { quote: 'A preparação para a entrevista fez toda a diferença. Cheguei ao consulado muito mais tranquila.', name: 'Camila V.', rating: 5, visa: 'Visto Americano', country: 'us' },
@@ -23,4 +23,4 @@ export const testimonials = [
 ]
 
 // Depoimentos em destaque na página inicial.
-export const featuredTestimonials = [testimonials[6], ...testimonials.slice(0, 3)]
+export const featuredTestimonials = testimonials.slice(0, 3)
